@@ -1,89 +1,148 @@
+/**
+ * ============================================
+ * MAIN STYLESHEET
+ * ============================================
+ * 
+ * This file controls all the colors, fonts, and styles for your portfolio.
+ * 
+ * SECTIONS:
+ * 1. FONTS - Google Fonts import
+ * 2. COLOR THEME - Dark theme with neon accents
+ * 3. GLOBAL STYLES - Base styles for body, headings
+ * 4. CUSTOM COMPONENTS - Cards, buttons, effects
+ * 5. ANIMATIONS - Floating, glowing, fade effects
+ * 6. SCROLLBAR - Custom scrollbar styling
+ */
+
+/* ============================================
+   1. FONTS
+   ============================================
+   We use two fonts:
+   - Sora: Main body text (clean, modern)
+   - Orbitron: Display/heading text (tech/futuristic)
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
+/* ============================================
+   2. COLOR THEME
+   ============================================
+   All colors are defined as CSS variables using HSL format.
+   This makes it easy to change the entire theme by editing these values.
+   
+   TO CHANGE COLORS:
+   - Edit the HSL values below
+   - HSL = Hue (0-360), Saturation (0-100%), Lightness (0-100%)
+   - Example: --primary: 72 100% 50% = Bright lime green
+*/
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
+    /* Background colors - very dark for that sleek look */
+    --background: 0 0% 4%;           /* Almost black */
+    --foreground: 0 0% 98%;          /* Almost white */
 
+    /* Card colors - slightly lighter than background */
     --card: 0 0% 7%;
     --card-foreground: 0 0% 98%;
 
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
+    /* Primary color - NEON LIME GREEN */
+    /* Change this to change the main accent color */
     --primary: 72 100% 50%;
     --primary-foreground: 0 0% 4%;
 
+    /* Secondary color - CYAN/TEAL */
     --secondary: 180 100% 40%;
     --secondary-foreground: 0 0% 98%;
 
+    /* Muted colors - for less important elements */
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 60%;
 
+    /* Accent color - PURPLE */
     --accent: 270 80% 60%;
     --accent-foreground: 0 0% 98%;
 
+    /* Error/destructive color */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
+    /* Border and input colors */
     --border: 0 0% 16%;
     --input: 0 0% 16%;
     --ring: 72 100% 50%;
 
+    /* Border radius for rounded corners */
     --radius: 0.75rem;
 
-    /* Custom gradient tokens */
+    /* Custom gradient effects */
     --gradient-glow: linear-gradient(135deg, hsl(72, 100%, 50%) 0%, hsl(160, 100%, 40%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 6%) 0%, hsl(0, 0%, 3%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0, 0%, 10%) 0%, hsl(0, 0%, 6%) 100%);
     
-    /* Glow effects */
+    /* Glow effects for neon look */
     --glow-primary: 0 0 40px hsl(72, 100%, 50%, 0.3);
     --glow-secondary: 0 0 40px hsl(180, 100%, 40%, 0.2);
     --glow-accent: 0 0 60px hsl(270, 80%, 60%, 0.15);
 
-    /* Neon text glow */
+    /* Text glow for neon text effect */
     --text-glow: 0 0 20px hsl(72, 100%, 50%, 0.5), 0 0 40px hsl(72, 100%, 50%, 0.3);
   }
 }
 
+/* ============================================
+   3. GLOBAL STYLES
+   ============================================ */
 @layer base {
   * {
     @apply border-border;
   }
 
+  /* Smooth scrolling when clicking nav links */
   html {
     scroll-behavior: smooth;
   }
 
+  /* Body styling */
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Sora', sans-serif;
   }
 
+  /* All headings use Sora font */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Sora', sans-serif;
   }
 
+  /* Display class for futuristic Orbitron font */
   .font-display {
     font-family: 'Orbitron', sans-serif;
   }
 }
 
+/* ============================================
+   4. CUSTOM COMPONENTS
+   ============================================
+   Reusable style classes for cards, buttons, effects
+*/
 @layer components {
+  /* Glowing text effect */
   .neon-text {
     text-shadow: var(--text-glow);
   }
 
+  /* Neon border with glow */
   .neon-border {
     border: 1px solid hsl(var(--primary) / 0.5);
     box-shadow: var(--glow-primary), inset 0 0 20px hsl(var(--primary) / 0.05);
   }
 
+  /* Card with hover glow effect */
   .glow-card {
     background: var(--gradient-card);
     border: 1px solid hsl(var(--border));
@@ -95,6 +154,7 @@
     box-shadow: var(--glow-primary);
   }
 
+  /* Gradient text (lime to cyan) */
   .gradient-text {
     background: var(--gradient-glow);
     -webkit-background-clip: text;
@@ -102,6 +162,7 @@
     background-clip: text;
   }
 
+  /* Subtle grid pattern background */
   .cyber-grid {
     background-image: 
       linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
@@ -109,19 +170,23 @@
     background-size: 50px 50px;
   }
 
+  /* Floating animation class */
   .floating {
     animation: float 6s ease-in-out infinite;
   }
 
+  /* Floating with delay (for alternating effect) */
   .floating-delayed {
     animation: float 6s ease-in-out infinite;
     animation-delay: -3s;
   }
 
+  /* Pulsing glow effect */
   .pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite;
   }
 
+  /* Rotating gradient ring for profile picture */
   .profile-ring {
     background: conic-gradient(
       from 0deg,
@@ -132,39 +197,15 @@
     );
     animation: spin 8s linear infinite;
   }
-
-  .btn-glow {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-
-  .btn-glow::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gradient-glow);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .btn-glow:hover::before {
-    opacity: 0.1;
-  }
-
-  .section-fade {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease forwards;
-  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+/* ============================================
+   5. ANIMATIONS
+   ============================================
+   Keyframe animations for floating, glowing, fading effects
+*/
 
+/* Floating up and down animation */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -174,6 +215,7 @@
   }
 }
 
+/* Pulsing glow animation */
 @keyframes pulseGlow {
   0%, 100% {
     box-shadow: var(--glow-primary);
@@ -183,6 +225,7 @@
   }
 }
 
+/* Fade in from below animation */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -190,6 +233,7 @@
   }
 }
 
+/* Spinning animation */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -199,6 +243,7 @@
   }
 }
 
+/* Slide in from left animation */
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -210,11 +255,16 @@
   }
 }
 
+/* Animation utility classes */
 .animate-slide-in {
   animation: slideIn 0.5s ease forwards;
 }
 
-/* Custom scrollbar */
+/* ============================================
+   6. SCROLLBAR STYLING
+   ============================================
+   Custom scrollbar for a cleaner look
+*/
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -230,4 +280,11 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.5);
+}
+
+/* Text wrapping utility */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }

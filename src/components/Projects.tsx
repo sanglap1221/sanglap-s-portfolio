@@ -1,98 +1,45 @@
-import { useState } from 'react';
-import { ExternalLink, Github, X, ChevronRight, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+/**
+ * ============================================
+ * PROJECTS COMPONENT
+ * ============================================
+ * 
+ * Displays your portfolio projects in a filterable grid.
+ * Features:
+ * - Filter buttons to show projects by category
+ * - Project cards with image, title, description, and tech tags
+ * - Modal popup with full project details
+ * 
+ * TO EDIT:
+ * - Add/remove/edit projects in src/data/content.ts (projects array)
+ * - Edit categories in src/data/content.ts (projectCategories array)
+ */
 
-const projects = [
-  {
-    id: 1,
-    title: 'Jiremali Samaj App',
-    category: 'Mobile App',
-    description: 'A community app with real-time chat and post sharing functionality. Successfully published on Google Play Store.',
-    fullDescription: 'Built during my internship, this community-focused application enables real-time communication and content sharing among members. Features include instant messaging, post creation with media support, user authentication, and push notifications.',
-    tech: ['Flutter', 'Firebase', 'Firestore', 'FCM'],
-    image: '🏠',
-    isLive: true,
-    whatILearned: 'Working on a production app taught me about handling real-world scenarios, optimizing for different devices, and the importance of user feedback in development.',
-  },
-  {
-    id: 2,
-    title: 'Soci-Go App',
-    category: 'UI/UX',
-    description: 'A responsive social media application UI with modern design patterns and smooth animations.',
-    fullDescription: 'A beautifully designed social media application featuring a complete feed system, stories, messaging interface, and profile management. Built with attention to responsive design principles.',
-    tech: ['Flutter', 'Dart', 'Custom Widgets'],
-    image: '📱',
-    isLive: false,
-    whatILearned: 'This project enhanced my UI/UX skills significantly, teaching me about creating intuitive navigation and engaging visual hierarchies.',
-  },
-  {
-    id: 3,
-    title: 'CRUD App for Books',
-    category: 'Full Stack',
-    description: 'A complete book management system with REST API integration and Provider state management.',
-    fullDescription: 'Full-featured CRUD application for managing a book collection. Includes search, filtering, categorization, and persistent storage using REST APIs with clean architecture patterns.',
-    tech: ['Flutter', 'REST API', 'Provider', 'SQLite'],
-    image: '📚',
-    isLive: false,
-    whatILearned: 'Mastered state management with Provider and understood the importance of clean architecture in maintaining scalable applications.',
-  },
-  {
-    id: 4,
-    title: 'Weather App',
-    category: 'Mobile App',
-    description: 'Real-time weather application with location-based forecasts and offline caching.',
-    fullDescription: 'A weather application that provides accurate forecasts using live API data. Features include location detection, 7-day forecasts, weather alerts, and offline mode with cached data.',
-    tech: ['Flutter', 'OpenWeather API', 'Geolocator', 'Hive'],
-    image: '🌤️',
-    isLive: false,
-    whatILearned: 'Learned about working with external APIs, handling network states, and implementing effective caching strategies.',
-  },
-  {
-    id: 5,
-    title: 'Hand Gesture Mouse Control',
-    category: 'ML/AI',
-    description: 'Control your computer mouse using hand gestures with computer vision.',
-    fullDescription: 'An innovative project that uses computer vision to track hand movements and translate them into mouse actions. Supports gestures for clicking, scrolling, and cursor movement.',
-    tech: ['Python', 'OpenCV', 'Mediapipe', 'PyAutoGUI'],
-    image: '🖐️',
-    isLive: false,
-    whatILearned: 'Gained hands-on experience with computer vision libraries and real-time gesture recognition algorithms.',
-  },
-  {
-    id: 6,
-    title: 'Genetic Disease Risk Predictor',
-    category: 'ML Web App',
-    description: 'A machine learning web application that predicts genetic disease risks.',
-    fullDescription: 'A Streamlit-based web application that uses machine learning models to predict the probability of genetic diseases based on user inputs and family history data.',
-    tech: ['Python', 'Streamlit', 'Scikit-learn', 'Pandas'],
-    image: '🧬',
-    isLive: false,
-    whatILearned: 'Understood the end-to-end ML pipeline from data preprocessing to model deployment in a user-friendly web interface.',
-  },
-];
+import { useState } from 'react';
+import { ExternalLink, Github, ChevronRight, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { projects, projectCategories, Project } from '@/data/content';
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-  const [filter, setFilter] = useState('All');
-
-  const categories = ['All', 'Mobile App', 'ML/AI', 'Full Stack', 'UI/UX'];
+  // State to track which project is selected for the modal
+  // null means no modal is open
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === filter);
+  // State to track the current filter category
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  // Filter projects based on the selected category
+  const filteredProjects = activeFilter === 'All'
+    ? projects
+    : projects.filter(project => project.category === activeFilter);
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden cyber-grid">
-      {/* Background */}
+      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
+        
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
@@ -105,19 +52,19 @@ const Projects = () => {
             A showcase of my work across mobile development, machine learning, and full-stack applications
           </p>
 
-          {/* Filter Tabs */}
+          {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => (
+            {projectCategories.map((category) => (
               <button
-                key={cat}
-                onClick={() => setFilter(cat)}
+                key={category}
+                onClick={() => setActiveFilter(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filter === cat
+                  activeFilter === category
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground'
                 }`}
               >
-                {cat}
+                {category}
               </button>
             ))}
           </div>
@@ -125,32 +72,28 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
               className="group glow-card rounded-2xl overflow-hidden cursor-pointer"
               onClick={() => setSelectedProject(project)}
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Project Image/Emoji Placeholder */}
+              {/* Project Image/Icon Placeholder */}
               <div className="relative h-48 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center overflow-hidden">
                 <span className="text-6xl group-hover:scale-125 transition-transform duration-500">
-                  {project.image}
+                  {project.icon}
                 </span>
                 
-                {/* Live Badge */}
+                {/* Live Badge - shows if project is published */}
                 {project.isLive && (
                   <div className="absolute top-4 right-4 flex items-center gap-1 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
                     <Star className="w-3 h-3" />
                     Live on Play Store
                   </div>
                 )}
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              {/* Content */}
+              {/* Project Info */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-primary text-xs font-medium uppercase tracking-wider">
@@ -165,16 +108,17 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                {/* Tech Tags */}
+                {/* Tech Tags - show first 3 */}
                 <div className="flex flex-wrap gap-2 mt-4">
-                  {project.tech.slice(0, 3).map((t) => (
+                  {project.tech.slice(0, 3).map((tech) => (
                     <span
-                      key={t}
+                      key={tech}
                       className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground"
                     >
-                      {t}
+                      {tech}
                     </span>
                   ))}
+                  {/* Show "+X" if there are more than 3 technologies */}
                   {project.tech.length > 3 && (
                     <span className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground">
                       +{project.tech.length - 3}
@@ -188,11 +132,12 @@ const Projects = () => {
       </div>
 
       {/* Project Detail Modal */}
+      {/* This opens when a project is clicked */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="max-w-2xl bg-card border-border">
           <DialogHeader>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-4xl">{selectedProject?.image}</span>
+              <span className="text-4xl">{selectedProject?.icon}</span>
               {selectedProject?.isLive && (
                 <span className="flex items-center gap-1 bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium">
                   <Star className="w-3 h-3" />
@@ -205,25 +150,28 @@ const Projects = () => {
           </DialogHeader>
 
           <div className="space-y-6">
+            {/* Full Description */}
             <div>
               <h4 className="font-semibold mb-2">About the Project</h4>
               <p className="text-muted-foreground">{selectedProject?.fullDescription}</p>
             </div>
 
+            {/* Technologies Used */}
             <div>
               <h4 className="font-semibold mb-2">Technologies Used</h4>
               <div className="flex flex-wrap gap-2">
-                {selectedProject?.tech.map((t) => (
+                {selectedProject?.tech.map((tech) => (
                   <span
-                    key={t}
+                    key={tech}
                     className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium"
                   >
-                    {t}
+                    {tech}
                   </span>
                 ))}
               </div>
             </div>
 
+            {/* What I Learned */}
             <div className="neon-border rounded-xl p-4 bg-card/50">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
                 <span className="text-lg">💡</span>
@@ -232,6 +180,7 @@ const Projects = () => {
               <p className="text-muted-foreground text-sm">{selectedProject?.whatILearned}</p>
             </div>
 
+            {/* Action Buttons */}
             <div className="flex gap-3 pt-2">
               <Button variant="outline" className="flex-1 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
                 <Github className="w-4 h-4 mr-2" />
