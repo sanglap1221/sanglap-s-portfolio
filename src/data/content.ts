@@ -31,10 +31,10 @@ export const personalInfo = {
   title: "Flutter App Developer | AI/ML Enthusiast",
   
   // Hero section intro text
-  heroIntro: "I develop scalable and modern mobile apps using Flutter & Firebase, focused on great user experience and smart technology.",
+  heroIntro: "I build modern, scalable apps with Flutter & Firebase and explore AI & ML to deliver smarter user experiences.",
   
   // About section bio (longer description)
-  aboutBio: "I am a Mobile App Developer specializing in Flutter with internship experience building real-world applications. I am passionate about combining intelligent solutions with seamless UI, working across domains like AI/ML and full-stack concepts to deliver impactful digital experiences.",
+  aboutBio: "I am a Cross-Platform Mobile Engineer specializing in Flutter and Firebase, with valuable internship experience building and deploying real-world applications.\n\nMy passion lies in integrating intelligent solutions (AI/ML) with seamless UI/UX to build apps that are not just beautiful, but also smart and highly functional. I also leverage full-stack concepts for robust, end-to-end delivery.",
   
   // Footer tagline
   footerTagline: "Flutter App Developer crafting beautiful mobile experiences with passion and precision.",
@@ -59,6 +59,7 @@ export const education: Education[] = [
     school: "University of Engineering & Management (UEM), Jaipur",
     year: "2023 – 2027",
     score: "CGPA: 8.37/10",
+    coursework: "Data Structures, Algorithms, Mobile Computing, Machine Learning, Database Systems",
     isCurrent: true,
   },
   {
@@ -220,7 +221,7 @@ export const projects: Project[] = [
   {
     id: 2,
     title: "Soci-Go App",
-    category: "UI/UX",
+    category: "Mobile App",
     description: "A responsive social media application UI with modern design patterns and smooth animations.",
     fullDescription: "A beautifully designed social media application featuring a complete feed system, stories, messaging interface, and profile management. Built with attention to responsive design principles.",
     tech: ["Flutter", "Dart", "Custom Widgets"],
@@ -275,7 +276,7 @@ export const projects: Project[] = [
 ];
 
 // Project categories for filtering
-export const projectCategories = ["All", "Mobile App", "ML/AI", "Full Stack", "UI/UX", "ML Web App"];
+export const projectCategories = ["All", "Mobile App", "ML/AI", "Full Stack", "ML Web App"];
 
 // ============================================
 // CONTACT INFO
@@ -294,8 +295,8 @@ export const contactInfo = {
 // Update your social media links here
 
 export const socialLinks = {
-  github: "https://github.com/sanglapghosh",
-  linkedin: "https://linkedin.com/in/sanglapghosh",
+  github: "https://github.com/sanglap1221",
+  linkedin: "https://www.linkedin.com/in/sanglap-ghosh-62960328a/",
 };
 
 // ============================================

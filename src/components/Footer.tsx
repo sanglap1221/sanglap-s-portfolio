@@ -103,9 +103,12 @@ const Footer = () => {
               <Button
                 variant="outline"
                 className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground w-full justify-center"
+                asChild
               >
-                <Download className="w-4 h-4 mr-2" />
-                Download CV
+                <a href="/Sanglap_Ghosh_CV.pdf" download="Sanglap_Ghosh_CV.pdf">
+                  <Download className="w-4 h-4 mr-2" />
+                  Download CV
+                </a>
               </Button>
               <Button
                 asChild
@@ -121,13 +124,11 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-center gap-4">
           <p className="text-muted-foreground text-sm">
             © {currentYear} {personalInfo.name}. All rights reserved.
           </p>
-          <p className="text-muted-foreground text-sm flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> using Flutter & React
-          </p>
+         
         </div>
       </div>
     </footer>

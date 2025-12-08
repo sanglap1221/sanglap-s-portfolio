@@ -92,9 +92,12 @@ const Header = () => {
               variant="outline"
               size="sm"
               className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+              asChild
             >
-              <Download className="w-4 h-4 mr-2" />
-              Download CV
+              <a href="/Sanglap_Ghosh_CV.pdf" download="Sanglap_Ghosh_CV.pdf">
+                <Download className="w-4 h-4 mr-2" />
+                Download CV
+              </a>
             </Button>
           </div>
 
@@ -126,9 +129,12 @@ const Header = () => {
               <Button
                 variant="outline"
                 className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground mt-2"
+                asChild
               >
-                <Download className="w-4 h-4 mr-2" />
-                Download CV
+                <a href="/Sanglap_Ghosh_CV.pdf" download="Sanglap_Ghosh_CV.pdf">
+                  <Download className="w-4 h-4 mr-2" />
+                  Download CV
+                </a>
               </Button>
             </div>
           </div>

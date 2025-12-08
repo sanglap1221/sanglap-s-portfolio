@@ -29,9 +29,7 @@ const About = () => {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
-            About Me
-          </span>
+         
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Know More <span className="gradient-text">About Me</span>
           </h2>
@@ -48,7 +46,7 @@ const About = () => {
                 <Code2 className="w-6 h-6 text-primary" />
                 Who I Am
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {personalInfo.aboutBio}
               </p>
             </div>
