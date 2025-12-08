@@ -50,6 +50,7 @@ export interface Education {
   school: string;
   year: string;
   score: string;
+  coursework?: string;
   isCurrent?: boolean;
 }
 

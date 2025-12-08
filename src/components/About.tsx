@@ -57,16 +57,16 @@ const About = () => {
                 <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Users className="w-6 h-6 text-primary" />
                 </div>
-                <h4 className="font-semibold mb-1">Team Player</h4>
-                <p className="text-muted-foreground text-sm">Collaborative & communicative</p>
+                <h4 className="font-semibold mb-1">Team-Oriented</h4>
+                <p className="text-muted-foreground text-sm">Proactive collaborator & clear communicator</p>
               </div>
               
               <div className="glow-card rounded-xl p-6 text-center">
                 <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-secondary/10 flex items-center justify-center">
                   <Lightbulb className="w-6 h-6 text-secondary" />
                 </div>
-                <h4 className="font-semibold mb-1">Quick Learner</h4>
-                <p className="text-muted-foreground text-sm">Emerging tech enthusiast</p>
+                <h4 className="font-semibold mb-1">Emerging Tech Advocate</h4>
+                <p className="text-muted-foreground text-sm">Rapidly adopting TFLite, State Management & ML</p>
               </div>
             </div>
           </div>
@@ -113,6 +113,11 @@ const About = () => {
                     <h4 className="font-semibold text-lg">{edu.degree}</h4>
                     <p className="text-muted-foreground">{edu.school}</p>
                     <p className="text-secondary font-medium mt-1">{edu.score}</p>
+                    {edu.coursework && (
+                      <p className="text-muted-foreground text-sm mt-2">
+                        <span className="font-medium">Relevant Coursework:</span> {edu.coursework}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
