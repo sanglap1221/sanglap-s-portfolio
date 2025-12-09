@@ -132,7 +132,7 @@ const About = () => {
                 <div>
                   <h4 className="font-semibold">Play Store Published</h4>
                   <p className="text-muted-foreground text-sm">
-                    Successfully launched app on Google Play Store
+                    Jiremali Samaj - A Flutter-based social networking app published on the Google Play Store with 100+ downloads and 5+ stars on the Play Store for user feedback.
                   </p>
                 </div>
               </div>
