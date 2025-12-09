@@ -14,8 +14,8 @@
  * - Edit categories in src/data/content.ts (projectCategories array)
  */
 
-import { useState } from 'react';
-import { ExternalLink, Github, ChevronRight, Star } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ExternalLink, ChevronRight, Star, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { projects, projectCategories, Project } from '@/data/content';
@@ -27,6 +27,17 @@ const Projects = () => {
   
   // State to track the current filter category
   const [activeFilter, setActiveFilter] = useState('All');
+
+  // 🔥 State to control "Live Demo" screenshots expand/collapse
+  const [showLiveDemo, setShowLiveDemo] = useState(false);
+
+  // 🔍 State to track zoomed screenshot
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+
+  // Reset live demo section whenever a new project is opened/closed
+  useEffect(() => {
+    setShowLiveDemo(false);
+  }, [selectedProject]);
 
   // Filter projects based on the selected category
   const filteredProjects = activeFilter === 'All'
@@ -134,7 +145,8 @@ const Projects = () => {
       {/* Project Detail Modal */}
       {/* This opens when a project is clicked */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-2xl bg-card border-border">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-card border-border">
+
           <DialogHeader>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-4xl">{selectedProject?.icon}</span>
@@ -172,25 +184,139 @@ const Projects = () => {
             </div>
 
             {/* What I Learned */}
-            <div className="neon-border rounded-xl p-4 bg-card/50">
-              <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <span className="text-lg">💡</span>
-                What I Learned
-              </h4>
-              <p className="text-muted-foreground text-sm">{selectedProject?.whatILearned}</p>
+            {selectedProject?.whatILearned && (
+              <div className="neon-border rounded-xl p-4 bg-card/50">
+                <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <span className="text-lg">💡</span>
+                  What I Learned
+                </h4>
+                <p className="text-muted-foreground text-sm">{selectedProject.whatILearned}</p>
+              </div>
+            )}
+
+            {/* 🔥 Live Demo Section (expands inside modal) */}
+       
+{/* Show both video and screenshots side by side when both exist */}
+{showLiveDemo && (selectedProject?.videoUrl || (selectedProject?.screenshots && selectedProject.screenshots.length > 0)) && (
+  <div className="space-y-4 overflow-hidden transition-all duration-300">
+    <h4 className="font-semibold">Live Demo</h4>
+    <p className="text-muted-foreground text-sm">
+      {selectedProject?.videoUrl && selectedProject?.screenshots?.length 
+        ? 'Watch the video and browse screenshots to see the project in action.'
+        : selectedProject?.videoUrl 
+        ? 'Watch the project in action.'
+        : 'A quick visual overview of the actual app screens.'}
+    </p>
+
+    <div className="max-h-96 overflow-y-auto pr-1 space-y-4">
+      {/* Video Player - shows if videoUrl is provided */}
+      {selectedProject?.videoUrl && (
+        <div className="w-full bg-muted rounded-xl overflow-hidden border border-border">
+          <video
+            controls
+            className="w-full max-h-80"
+            src={selectedProject.videoUrl}
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+
+      {/* Screenshots Grid - shows if screenshots are provided */}
+      {selectedProject?.screenshots && selectedProject.screenshots.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {selectedProject.screenshots.map((src, index) => (
+            <div
+              key={index}
+              className="w-full h-56 md:h-64 bg-muted flex items-center justify-center rounded-xl border border-border overflow-hidden cursor-zoom-in hover:border-primary transition-all"
+              onClick={() => setZoomedImage(src)}
+            >
+              <img
+                src={src}
+                alt={`${selectedProject.title} screenshot ${index + 1}`}
+                className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105"
+              />
             </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
 
             {/* Action Buttons */}
             <div className="flex gap-3 pt-2">
-              <Button variant="outline" className="flex-1 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-                <Github className="w-4 h-4 mr-2" />
-                View Code
-              </Button>
-              <Button className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90">
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Live Demo
-              </Button>
+              {/* Show Code Button - only if githubLink exists */}
+              {selectedProject?.githubLink && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="flex-1"
+                  asChild
+                >
+                  <a
+                    href={selectedProject.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Code2 className="w-4 h-4 mr-2" />
+                    Show Code
+                  </a>
+                </Button>
+              )}
+
+              {/* Case 1: video or screenshots -> toggle Live Demo inside modal */}
+              {(selectedProject?.videoUrl || (selectedProject?.screenshots && selectedProject.screenshots.length > 0)) && (
+                <Button
+                  type="button"
+                  className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
+                  onClick={() => setShowLiveDemo((prev) => !prev)}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  {showLiveDemo ? 'Hide Live Demo' : 'Show Live Demo'}
+                </Button>
+              )}
+
+              {/* Case 2: fallback to external live link - opens in new tab */}
+              {!selectedProject?.videoUrl && !selectedProject?.screenshots?.length && selectedProject?.liveLink && (
+                <Button 
+                  className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
+                  asChild
+                >
+                  <a 
+                    href={selectedProject.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Live Demo
+                  </a>
+                </Button>
+              )}
+
+              {/* Case 3: nothing available (no github, no demo) */}
+              {!selectedProject?.githubLink && !selectedProject?.videoUrl && !selectedProject?.screenshots?.length && !selectedProject?.liveLink && (
+                <div className="w-full text-center text-muted-foreground text-sm py-2">
+                  Live demo coming soon
+                </div>
+              )}
             </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* 🔍 Zoomed Image Dialog */}
+      <Dialog open={!!zoomedImage} onOpenChange={() => setZoomedImage(null)}>
+        <DialogContent className="max-w-3xl bg-card border-border">
+          <div className="w-full flex items-center justify-center py-4">
+            {zoomedImage && (
+              <img
+                src={zoomedImage}
+                alt="Zoomed project screenshot"
+                className="max-w-full max-h-[80vh] object-contain rounded-xl"
+              />
+            )}
           </div>
         </DialogContent>
       </Dialog>
