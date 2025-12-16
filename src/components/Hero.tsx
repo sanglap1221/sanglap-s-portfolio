@@ -1,18 +1,3 @@
-/**
- * ============================================
- * HERO COMPONENT
- * ============================================
- *
- * Main landing section of the portfolio:
- * - Name, title, intro
- * - Two CTA buttons
- * - Profile picture with neon effects
- * - Floating skill icons
- * - Scroll indicator
- *
- * Edit content in: src/data/content.ts
- */
-
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/content";

@@ -10,11 +10,12 @@
  * 1. Header (navbar)
  * 2. Hero (landing section)
  * 3. About (bio and education)
- * 4. Skills (technical skills)
- * 5. Services (what you offer)
- * 6. Projects (portfolio)
- * 7. Contact (form and info)
- * 8. Footer
+ * 4. Experience (roles, proof of work)
+ * 5. Skills (technical skills)
+ * 6. Services (what you offer)
+ * 7. Projects (portfolio)
+ * 8. Contact (form and info)
+ * 9. Footer
  */
 
 import { useEffect } from 'react';
@@ -24,6 +25,7 @@ import { personalInfo } from '@/data/content';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import Experience from '@/components/Experience';
 import Skills from '@/components/Skills';
 import Services from '@/components/Services';
 import Projects from '@/components/Projects';
@@ -53,6 +55,7 @@ const Index = () => {
       <Header />
       <Hero />
       <About />
+      <Experience />
       <Skills />
       <Services />
       <Projects />

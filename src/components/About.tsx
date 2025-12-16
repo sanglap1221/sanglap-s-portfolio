@@ -1,19 +1,3 @@
-/**
- * ============================================
- * ABOUT COMPONENT
- * ============================================
- * 
- * This section tells visitors about you.
- * It includes:
- * - Your bio/description
- * - Soft skills (Team Player, Quick Learner)
- * - Education timeline
- * - Achievement badge
- * 
- * TO EDIT:
- * - Change your bio in src/data/content.ts (personalInfo.aboutBio)
- * - Change education in src/data/content.ts (education array)
- */
 
 import { GraduationCap, Users, Lightbulb, Code2 } from 'lucide-react';
 import { personalInfo, education } from '@/data/content';

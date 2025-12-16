@@ -1,19 +1,3 @@
-/**
- * ============================================
- * SERVICES COMPONENT
- * ============================================
- * 
- * Displays the services you offer in a grid of cards.
- * Each service shows:
- * - Icon
- * - Title
- * - Description
- * - Feature tags
- * 
- * TO EDIT:
- * - Add/remove/edit services in src/data/content.ts (services array)
- */
-
 import { services } from '@/data/content';
 
 const Services = () => {

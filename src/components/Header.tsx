@@ -1,23 +1,12 @@
-/**
- * ============================================
- * HEADER / NAVBAR COMPONENT
- * ============================================
- * 
- * This is the navigation bar at the top of the page.
- * It stays fixed as you scroll and includes:
- * - Logo (your initials)
- * - Navigation links
- * - Download CV button
- * - Mobile menu
- * 
- * TO EDIT:
- * - Change navigation links in src/data/content.ts (navLinks)
- * - Change your name/initials in src/data/content.ts (personalInfo)
- */
-
 import { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Eye, ChevronDown, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { personalInfo, navLinks } from '@/data/content';
 
 const Header = () => {
@@ -88,17 +77,33 @@ const Header = () => {
 
           {/* Desktop CTA Button - hidden on mobile */}
           <div className="hidden md:block">
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
-              asChild
-            >
-              <a href="/Sanglap_Ghosh_CV.pdf" download="Sanglap_Ghosh_CV.pdf">
-                <Download className="w-4 h-4 mr-2" />
-                Download CV
-              </a>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                      <FileText className="w-4 h-4 mr-2" />
+                    My CV
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                  <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <Eye className="w-4 h-4 mr-2" />
+                    View CV
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download CV
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile Menu Button - only visible on mobile */}
@@ -126,16 +131,30 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <Button
-                variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground mt-2"
-                asChild
-              >
-                <a href="/Sanglap_Ghosh_CV.pdf" download="Sanglap_Ghosh_CV.pdf">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download CV
-                </a>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground mt-2"
+                  >
+                    My CV
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)]">
+                  <DropdownMenuItem asChild>
+                    <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
+                      <Eye className="w-4 h-4 mr-2" />
+                      View CV
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf">
+                      <Download className="w-4 h-4 mr-2" />
+                      Download CV
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         )}

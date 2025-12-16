@@ -1,21 +1,12 @@
-/**
- * ============================================
- * FOOTER COMPONENT
- * ============================================
- * 
- * The footer at the bottom of the page with:
- * - Logo and tagline
- * - Social links
- * - Quick navigation links
- * - Download CV and Contact buttons
- * - Copyright notice
- * 
- * TO EDIT:
- * - Change info in src/data/content.ts (personalInfo, socialLinks, navLinks)
- */
 
-import { Github, Linkedin, Mail, Download, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Download, Heart, Eye, FileText, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { personalInfo, socialLinks, navLinks } from '@/data/content';
 
 const Footer = () => {
@@ -100,16 +91,32 @@ const Footer = () => {
               Let's build something amazing together. Download my CV or get in touch!
             </p>
             <div className="flex flex-col gap-3">
-              <Button
-                variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground w-full justify-center"
-                asChild
-              >
-                <a href="/Sanglap_Ghosh_CV.pdf" download="Sanglap_Ghosh_CV.pdf">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download CV
-                </a>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground w-full justify-center"
+                  >
+                    <FileText className="w-4 h-4 mr-2" />
+                    My CV
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem asChild>
+                    <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
+                      <Eye className="w-4 h-4 mr-2" />
+                      View CV
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf">
+                      <Download className="w-4 h-4 mr-2" />
+                      Download CV
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               <Button
                 asChild
                 className="bg-primary text-primary-foreground hover:bg-primary/90 w-full justify-center"

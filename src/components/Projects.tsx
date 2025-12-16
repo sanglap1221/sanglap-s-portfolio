@@ -1,19 +1,3 @@
-/**
- * ============================================
- * PROJECTS COMPONENT
- * ============================================
- * 
- * Displays your portfolio projects in a filterable grid.
- * Features:
- * - Filter buttons to show projects by category
- * - Project cards with image, title, description, and tech tags
- * - Modal popup with full project details
- * 
- * TO EDIT:
- * - Add/remove/edit projects in src/data/content.ts (projects array)
- * - Edit categories in src/data/content.ts (projectCategories array)
- */
-
 import { useState, useEffect } from 'react';
 import { ExternalLink, ChevronRight, Star, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';

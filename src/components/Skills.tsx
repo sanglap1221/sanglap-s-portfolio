@@ -1,19 +1,3 @@
-/**
- * ============================================
- * SKILLS COMPONENT
- * ============================================
- * 
- * Displays your technical skills in a grid of cards.
- * Each skill shows:
- * - Icon
- * - Name
- * - Description
- * - Progress bar showing your proficiency level
- * 
- * TO EDIT:
- * - Add/remove/edit skills in src/data/content.ts (skills array)
- */
-
 import { skills } from '@/data/content';
 
 const Skills = () => {

@@ -1,14 +1,3 @@
-/**
- * ============================================
- * CONTENT DATA FILE
- * ============================================
- * Central place to update portfolio copy and metadata.
- */
-
-// ============================================
-// PERSONAL INFO
-// ============================================
-
 export const personalInfo = {
   name: "Sanglap Ghosh",
   initials: "SG",
@@ -41,7 +30,7 @@ export const education: Education[] = [
     year: "2023 – 2027",
     score: "CGPA: 8.37/10",
     coursework:
-      "Data Structures, Algorithms, Mobile Computing, Machine Learning, Database Systems",
+      "Data Structures & Algorithms, Machine Learning, Database Systems",
     isCurrent: true,
   },
   {
@@ -50,6 +39,39 @@ export const education: Education[] = [
     year: "2020 – 2022",
     score: "Score: 90%",
     isCurrent: false,
+  },
+];
+
+// ============================================
+// EXPERIENCE
+// ============================================
+
+export interface Experience {
+  role: string;
+  company: string;
+  duration: string;
+  location?: string;
+  summary: string;
+  highlights: string[];
+  certificateUrl?: string;
+}
+
+export const experiences: Experience[] = [
+  {
+    role: "Flutter App Developer Intern",
+    company: "ShivKalp IT Services",
+    duration: "May 2025 – July 2025",
+    location: "Remote",
+    summary:
+      "Built and shipped Flutter features for a production app while collaborating closely with designers and backend engineers.",
+    highlights: [
+      "Built and deployed production-ready Flutter applications using clean architecture",
+      "Integrated Firebase Authentication, Firestore, and REST APIs",
+      "Collaborated with designers and backend teams for scalable features",
+      "Contributed to an app published on the Google Play Store",
+      "Focused on performance optimization, responsive UI, and maintainable code",
+    ],
+    certificateUrl: "public/sanglap_cerf.pdf",
   },
 ];
 
@@ -190,8 +212,8 @@ export interface Project {
   whatILearned: string;
   liveLink?: string;
   screenshots?: string[];
-  videoUrl?: string; // 🎥 Video demo URL (e.g., for crowd detection)
-  githubLink?: string; // 🔗 GitHub repository link
+  videoUrl?: string; // Video demo URL (e.g., for crowd detection)
+  githubLink?: string; // GitHub repository link
 }
 
 export const projects: Project[] = [
@@ -383,6 +405,7 @@ export const socialLinks = {
 export const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },

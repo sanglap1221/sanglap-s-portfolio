@@ -1,17 +1,3 @@
-/**
- * ============================================
- * CONTACT COMPONENT (NO FORM)
- * ============================================
- *
- * This section shows:
- * - Email, phone, location
- * - Social links (GitHub, LinkedIn)
- * - Availability message
- *
- * TO EDIT:
- * - contactInfo in src/data/content.ts
- * - socialLinks in src/data/content.ts
- */
 
 import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
 import { contactInfo, socialLinks } from "@/data/content";
