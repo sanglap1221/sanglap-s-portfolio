@@ -71,7 +71,7 @@ export const experiences: Experience[] = [
       "Contributed to an app published on the Google Play Store",
       "Focused on performance optimization, responsive UI, and maintainable code",
     ],
-    certificateUrl: "public/sanglap_cerf.pdf",
+    certificateUrl: "sanglap_cerf.pdf",
   },
 ];
 
