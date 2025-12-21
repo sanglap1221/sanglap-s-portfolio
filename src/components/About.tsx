@@ -50,7 +50,7 @@ const About = () => {
                   <Lightbulb className="w-6 h-6 text-secondary" />
                 </div>
                 <h4 className="font-semibold mb-1">Emerging Tech Advocate</h4>
-                <p className="text-muted-foreground text-sm">Rapidly adopting TFLite, State Management & ML</p>
+                <p className="text-muted-foreground text-sm">Rapidly adopting TFLite, BLoC & GetX state patterns</p>
               </div>
             </div>
           </div>

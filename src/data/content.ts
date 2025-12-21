@@ -111,7 +111,7 @@ export const skills: Skill[] = [
   },
   {
     name: "State Management",
-    description: "Provider, Riverpod, and scoped architecture",
+    description: "BLoC and GetX for scalable state patterns",
     level: 80,
     color: "primary",
     icon: "🧩",
