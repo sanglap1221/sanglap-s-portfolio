@@ -70,10 +70,7 @@ const Contact = () => {
                 <p className="font-medium">{contactInfo.location}</p>
               </div>
             </div>
-          </div>
 
-          {/* Right column - social & availability */}
-          <div className="space-y-6">
             {/* Social Links */}
             <div className="glow-card rounded-xl p-6">
               <h3 className="font-semibold mb-4">Connect with me</h3>
@@ -98,7 +95,10 @@ const Contact = () => {
                 </a>
               </div>
             </div>
+          </div>
 
+          {/* Right column - social & availability */}
+          <div className="space-y-6">
             {/* Availability Badge */}
             <div className="neon-border rounded-xl p-6 bg-card/50">
               <div className="flex items-center gap-3">

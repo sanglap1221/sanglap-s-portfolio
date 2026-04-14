@@ -1,9 +1,9 @@
 export const personalInfo = {
   name: "Sanglap Ghosh",
   initials: "SG",
-  title: "Flutter App Developer | AI/ML Enthusiast",
+  title: "Full Stack App & Web Developer",
   heroIntro:
-    "I build modern, scalable apps with Flutter & Firebase and explore AI & ML to deliver smarter user experiences.",
+    "I build scalable mobile apps and web applications with clean architecture, strong backend systems, and seamless user experience.",
   aboutBio:
     "I am a Cross-Platform Mobile Engineer specializing in Flutter and Firebase, with valuable internship experience building and deploying real-world applications.\n\nCurrently working as a developer, building scalable production applications with Flutter and modern web technologies.\n\nMy passion lies in integrating intelligent solutions (AI/ML) with seamless UI/UX to build apps that are not just beautiful, but also smart and highly functional. I also leverage full-stack concepts for robust, end-to-end delivery.",
   footerTagline:
@@ -54,6 +54,7 @@ export interface Experience {
   summary: string;
   highlights: string[];
   certificateUrl?: string;
+  playStoreUrl?: string;
 }
 
 export const experiences: Experience[] = [
@@ -66,13 +67,14 @@ export const experiences: Experience[] = [
       "Currently working on production Flutter applications, Play Store publishing workflows, and Node.js backend systems for live client products.",
     highlights: [
       "Managing Play Console tasks and app development for RelaxDoc Health",
-      "Published and maintained live app: https://play.google.com/store/apps/details?id=com.relaxdoc.health",
+      "Published and maintained a live app on Google Play Store",
       "Built Node.js backend modules for the astrology website Ekb Bhavisya",
       "Handling API integration and scalable app architecture",
       "Collaborating closely with designers, QA, and backend developers",
       "Optimizing app performance, responsiveness, and maintainability",
     ],
     certificateUrl: "/SANGLAP.pdf",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.relaxdoc.health",
   },
   {
     role: "Flutter App Developer Intern",
@@ -428,25 +430,8 @@ export const navLinks = [
   { name: "Work Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Services", href: "#services" },
-  { name: "Portfolio", href: "#projects" },
-  { name: "Certifications", href: "#certifications" },
+  { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
-];
-
-export interface Certification {
-  title: string;
-  issuer: string;
-  credential: string;
-  certificateUrl: string;
-}
-
-export const certifications: Certification[] = [
-  {
-    title: "Flutter Developer Intern",
-    issuer: "One Aim IT Solutions",
-    credential: "Internship Completion Certificate",
-    certificateUrl: "/SANGLAP.pdf",
-  },
 ];
 
 export const clientTechStack = ["Flutter", "React", "Node.js", "Firebase", "REST APIs"];

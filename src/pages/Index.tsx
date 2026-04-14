@@ -14,9 +14,8 @@
  * 5. Skills (technical skills)
  * 6. Services (what you offer)
  * 7. Projects (portfolio)
- * 8. Certifications (proof)
- * 9. Contact (form and info)
- * 10. Footer
+ * 8. Contact (form and info)
+ * 9. Footer
  */
 
 import { useEffect } from 'react';
@@ -30,7 +29,6 @@ import Experience from '@/components/Experience';
 import Skills from '@/components/Skills';
 import Services from '@/components/Services';
 import Projects from '@/components/Projects';
-import Certifications from '@/components/Certifications';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -61,7 +59,6 @@ const Index = () => {
       <Skills />
       <Services />
       <Projects />
-      <Certifications />
       <Contact />
       <Footer />
     </main>

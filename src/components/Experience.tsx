@@ -42,18 +42,33 @@ const Experience = () => {
                   )}
                 </div>
 
-                {exp.certificateUrl && (
+                {(exp.certificateUrl || exp.playStoreUrl) && (
                   <div className="flex flex-wrap gap-3">
-                    <Button
-                      size="sm"
-                      className="bg-primary text-primary-foreground hover:bg-primary/90"
-                      asChild
-                    >
-                      <a href={exp.certificateUrl} target="_blank" rel="noreferrer">
-                        View Certificate
-                        <ExternalLink className="w-4 h-4 ml-2" />
-                      </a>
-                    </Button>
+                    {exp.certificateUrl && (
+                      <Button
+                        size="sm"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90"
+                        asChild
+                      >
+                        <a href={exp.certificateUrl} target="_blank" rel="noreferrer">
+                          View Certificate
+                          <ExternalLink className="w-4 h-4 ml-2" />
+                        </a>
+                      </Button>
+                    )}
+                    {exp.playStoreUrl && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground"
+                        asChild
+                      >
+                        <a href={exp.playStoreUrl} target="_blank" rel="noreferrer">
+                          View App
+                          <ExternalLink className="w-4 h-4 ml-2" />
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 )}
               </div>

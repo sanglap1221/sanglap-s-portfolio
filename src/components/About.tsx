@@ -1,5 +1,6 @@
 
-import { GraduationCap, Users, Lightbulb, Code2 } from 'lucide-react';
+import { GraduationCap, Users, Lightbulb, Code2, ExternalLink, Smartphone } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { personalInfo, education } from '@/data/content';
 
 const About = () => {
@@ -111,17 +112,41 @@ const About = () => {
             </div>
 
             {/* Achievement Badge */}
-            <div className="neon-border rounded-xl p-6 bg-card/50">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shrink-0">
-                  <span className="text-2xl">🏆</span>
+            <div className="relative overflow-hidden neon-border rounded-2xl p-6 bg-card/60">
+              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/10 blur-2xl" />
+              <div className="relative z-10 space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shrink-0">
+                    <Smartphone className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg">One Aim Project - RelaxDoc Health</h4>
+                    <p className="text-muted-foreground text-sm mt-1">
+                      Built and maintained RelaxDoc Health at One Aim IT Solutions, including app development and Play Console operations for the live release.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold">Play Store Published</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Jiremali Samaj - A Flutter-based social networking app published on the Google Play Store with 100+ downloads and 5+ stars reviews on the Play Store as user feedback.
-                  </p>
+
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <span className="px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">Production App</span>
+                  <span className="px-2.5 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/30">Play Console</span>
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Live on Play Store</span>
                 </div>
+
+                <Button
+                  size="sm"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  asChild
+                >
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.relaxdoc.health"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View RelaxDoc on Play Store
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </Button>
               </div>
             </div>
           </div>

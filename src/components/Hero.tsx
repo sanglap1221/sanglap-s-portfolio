@@ -1,12 +1,13 @@
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/content";
 
 // Floating skill icons
 const floatingIcons = [
   { icon: "📱", label: "Flutter" },
-  { icon: "🔥", label: "Firebase" },
-  { icon: "🐍", label: "Python" },
+  { icon: "🌐", label: "React" },
+  { icon: "🔥", label: "Node.js" },
+  { icon: "⚡", label: "Firebase" },
 ];
 
 const Hero = () => {
@@ -110,17 +111,21 @@ const Hero = () => {
 
             {/* Heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              FLUTTER APP
+              FULL STACK APP &amp; WEB
               <br />
               <span className="gradient-text font-display italic">Developer</span>
               <span className="block text-muted-foreground text-lg md:text-xl mt-4 tracking-wide">
-                & AI/ML Enthusiast
+                Flutter • React • Node.js
                 </span>
             </h1>
 
             {/* Intro Paragraph */}
             <p className="text-muted-foreground text-lg max-w-lg mb-8 mx-auto lg:mx-0">
               {personalInfo.heroIntro}
+            </p>
+
+            <p className="text-primary text-base md:text-lg font-medium mb-8 max-w-lg mx-auto lg:mx-0">
+              🚀 From UI to Backend - I build complete end-to-end solutions
             </p>
 
             {/* Buttons */}
@@ -133,7 +138,7 @@ const Hero = () => {
                 asChild
               >
                 <a href="#projects">
-                  View Portfolio
+                  Explore Projects
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>
