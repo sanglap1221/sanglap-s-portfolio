@@ -93,6 +93,12 @@ const Hero = () => {
               RIGHT SIDE - TEXT CONTENT + BUTTONS
           ===================================================== */}
           <div className="text-center lg:text-left order-1 lg:order-2">
+            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 rounded-full px-4 py-2 mb-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-xs md:text-sm font-medium">
+                Currently Working as Full Stack Developer
+              </span>
+            </div>
             
             {/* Greeting Badge */}
             <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border rounded-full px-4 py-2 mb-6">
@@ -127,7 +133,7 @@ const Hero = () => {
                 asChild
               >
                 <a href="#projects">
-                  View Projects
+                  View Portfolio
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>

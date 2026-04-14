@@ -1,6 +1,6 @@
 
 import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
-import { contactInfo, socialLinks } from "@/data/content";
+import { clientTechStack, contactInfo, socialLinks } from "@/data/content";
 
 const Contact = () => {
   return (
@@ -108,6 +108,35 @@ const Contact = () => {
               <p className="text-muted-foreground text-sm mt-2">
                 Currently open to freelance work and internship opportunities.
               </p>
+            </div>
+
+            <div className="glow-card rounded-xl p-6">
+              <h3 className="font-semibold mb-3">Tech I Work With</h3>
+              <p className="text-muted-foreground text-sm">
+                {clientTechStack.join(" | ")}
+              </p>
+            </div>
+
+            <div className="neon-border rounded-xl p-6 bg-card/50">
+              <h3 className="font-semibold mb-3">Available for Freelance Work</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">✔</span>
+                  <span>App Development</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">✔</span>
+                  <span>Bug Fixing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">✔</span>
+                  <span>API Integration</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">✔</span>
+                  <span>UI Fixes</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

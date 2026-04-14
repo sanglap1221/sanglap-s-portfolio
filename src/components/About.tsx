@@ -33,6 +33,9 @@ const About = () => {
               <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {personalInfo.aboutBio}
               </p>
+              <p className="mt-4 text-sm text-primary font-medium">
+                Currently working as a developer, building scalable production applications with Flutter and modern web technologies.
+              </p>
             </div>
 
             {/* Soft Skills Cards */}

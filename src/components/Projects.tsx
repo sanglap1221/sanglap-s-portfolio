@@ -96,6 +96,11 @@ const Projects = () => {
                   </span>
                   <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                 </div>
+                {project.trustTag && (
+                  <span className="inline-block mb-2 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                    {project.trustTag}
+                  </span>
+                )}
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
@@ -143,6 +148,11 @@ const Projects = () => {
             </div>
             <DialogTitle className="text-2xl">{selectedProject?.title}</DialogTitle>
             <span className="text-primary text-sm font-medium">{selectedProject?.category}</span>
+            {selectedProject?.trustTag && (
+              <span className="inline-flex w-fit mt-2 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                {selectedProject.trustTag}
+              </span>
+            )}
           </DialogHeader>
 
           <div className="space-y-6">

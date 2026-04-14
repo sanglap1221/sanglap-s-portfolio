@@ -5,7 +5,7 @@ export const personalInfo = {
   heroIntro:
     "I build modern, scalable apps with Flutter & Firebase and explore AI & ML to deliver smarter user experiences.",
   aboutBio:
-    "I am a Cross-Platform Mobile Engineer specializing in Flutter and Firebase, with valuable internship experience building and deploying real-world applications.\n\nMy passion lies in integrating intelligent solutions (AI/ML) with seamless UI/UX to build apps that are not just beautiful, but also smart and highly functional. I also leverage full-stack concepts for robust, end-to-end delivery.",
+    "I am a Cross-Platform Mobile Engineer specializing in Flutter and Firebase, with valuable internship experience building and deploying real-world applications.\n\nCurrently working as a developer, building scalable production applications with Flutter and modern web technologies.\n\nMy passion lies in integrating intelligent solutions (AI/ML) with seamless UI/UX to build apps that are not just beautiful, but also smart and highly functional. I also leverage full-stack concepts for robust, end-to-end delivery.",
   footerTagline:
     "Flutter App Developer crafting beautiful mobile experiences with passion and precision.",
 };
@@ -57,6 +57,23 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
+  {
+    role: "Flutter / Full Stack Developer",
+    company: "One Aim IT Solutions",
+    duration: "31 Dec 2025 – Present",
+    location: "Remote",
+    summary:
+      "Currently working on production Flutter applications, Play Store publishing workflows, and Node.js backend systems for live client products.",
+    highlights: [
+      "Managing Play Console tasks and app development for RelaxDoc Health",
+      "Published and maintained live app: https://play.google.com/store/apps/details?id=com.relaxdoc.health",
+      "Built Node.js backend modules for the astrology website Ekb Bhavisya",
+      "Handling API integration and scalable app architecture",
+      "Collaborating closely with designers, QA, and backend developers",
+      "Optimizing app performance, responsiveness, and maintainability",
+    ],
+    certificateUrl: "/SANGLAP.pdf",
+  },
   {
     role: "Flutter App Developer Intern",
     company: "ShivKalp IT Services",
@@ -214,6 +231,7 @@ export interface Project {
   screenshots?: string[];
   videoUrl?: string; // Video demo URL (e.g., for crowd detection)
   githubLink?: string; // GitHub repository link
+  trustTag?: string;
 }
 
 export const projects: Project[] = [
@@ -237,6 +255,7 @@ export const projects: Project[] = [
   isLive: true,
   whatILearned:
     "Worked on a real production cycle including UI implementation, backend integration, deployment testing, optimization for Android devices, and user-feedback based improvements for Play Store release.",
+  trustTag: "Production Level",
   liveLink:
     "https://play.google.com/store/apps/details?id=com.community.jiremalisamajapp",
   
@@ -272,6 +291,7 @@ export const projects: Project[] = [
   whatILearned:
     "Deepened my understanding of full-stack product development — frontend architecture, backend REST APIs, Firebase authentication flows, media storage, deployment on Render, and secure JWT-based authorization.",
   liveLink: "",
+  trustTag: "Real Client Project",
   githubLink: "https://github.com/sanglap1221/mini-soci.git",
   screenshots: [
     "/screenshots/soci/1.jpg",
@@ -405,9 +425,28 @@ export const socialLinks = {
 export const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
+  { name: "Work Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
+  { name: "Portfolio", href: "#projects" },
+  { name: "Certifications", href: "#certifications" },
   { name: "Contact", href: "#contact" },
 ];
+
+export interface Certification {
+  title: string;
+  issuer: string;
+  credential: string;
+  certificateUrl: string;
+}
+
+export const certifications: Certification[] = [
+  {
+    title: "Flutter Developer Intern",
+    issuer: "One Aim IT Solutions",
+    credential: "Internship Completion Certificate",
+    certificateUrl: "/SANGLAP.pdf",
+  },
+];
+
+export const clientTechStack = ["Flutter", "React", "Node.js", "Firebase", "REST APIs"];
