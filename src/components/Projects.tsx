@@ -97,6 +97,11 @@ const Projects = () => {
                   </span>
                   <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                 </div>
+                {project.id === 1 && (
+                  <span className="inline-block mb-2 px-2.5 py-1 rounded-full text-[11px] font-bold bg-primary/20 text-primary border border-primary/50 uppercase tracking-tighter">
+                    🏆 TOP PROJECT
+                  </span>
+                )}
                 {project.trustTag && (
                   <span className="inline-block mb-2 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                     {project.trustTag}

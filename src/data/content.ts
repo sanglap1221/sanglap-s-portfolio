@@ -237,39 +237,50 @@ export interface Project {
 }
 
 export const projects: Project[] = [
- {
-  id: 1,
-  title: "Jiremali Samaj App",
-  category: "Full Stack",
-  description:
-    "A full-stack community application with real-time chat and media posts, deployed on Google Play Store.",
-  fullDescription:
-    "Jiremali Samaj App is a full-stack community-based mobile application developed during my internship. It facilitates real-time communication, media-based post sharing, and push notifications among community members. On the frontend, I implemented the entire Flutter UI and core app logic, ensuring smooth navigation and responsive layout across devices. On the backend, the team used Firebase Firestore, Storage, and Authentication. I integrated all Firebase modules on the client side, handled real-time listeners, state management, and ensured production-level handling for app publishing.",
-  tech: [
-    "Flutter",
-    "Dart",
-    "Firebase Firestore",
-    "Firebase Authentication",
-    "Cloud Storage",
-    "FCM",
-  ],
-  icon: "🏠",
-  isLive: true,
-  whatILearned:
-    "Worked on a real production cycle including UI implementation, backend integration, deployment testing, optimization for Android devices, and user-feedback based improvements for Play Store release.",
-  trustTag: "Production Level",
-  liveLink:
-    "https://play.google.com/store/apps/details?id=com.community.jiremalisamajapp",
-  
-  // screenshots: [
-  //   "/screenshots/jiremali1.png",
-  //   "/screenshots/jiremali2.png",
-  //   "/screenshots/jiremali3.png",
-  // ],
-},
+  {
+    id: 1,
+    title: "RelaxDoc Health",
+    category: "Mobile App",
+    description:
+      "A production-level health and wellness mobile application published on the Google Play Store.",
+    fullDescription:
+      "RelaxDoc Health is a comprehensive healthcare mobile application built with Flutter. I was responsible for the end-to-end development, including UI/UX implementation, API integration, and performance optimization. I managed the entire Google Play Console workflow, from alpha testing to the final production release. The app provides a seamless user experience for health monitoring and patient management, demonstrating my ability to ship and maintain real-world, high-traffic applications.",
+    tech: ["Flutter", "Dart", "Firebase", "Node.js", "REST API", "Play Console"],
+    icon: "🩺",
+    isLive: true,
+    whatILearned:
+      "Managed the full production lifecycle of a live app, including Play Store publishing, crash monitoring, performance profiling, and iterative feature development based on user feedback.",
+    trustTag: "Live on Play Store",
+    liveLink:
+      "https://play.google.com/store/apps/details?id=com.relaxdoc.health",
+  },
+  {
+    id: 2,
+    title: "Jiremali Samaj App",
+    category: "Full Stack",
+    description:
+      "A full-stack community application with real-time chat and media posts, deployed on Google Play Store.",
+    fullDescription:
+      "Jiremali Samaj App is a full-stack community-based mobile application developed during my internship. It facilitates real-time communication, media-based post sharing, and push notifications among community members. On the frontend, I implemented the entire Flutter UI and core app logic, ensuring smooth navigation and responsive layout across devices. On the backend, the team used Firebase Firestore, Storage, and Authentication. I integrated all Firebase modules on the client side, handled real-time listeners, state management, and ensured production-level handling for app publishing.",
+    tech: [
+      "Flutter",
+      "Dart",
+      "Firebase Firestore",
+      "Firebase Authentication",
+      "Cloud Storage",
+      "FCM",
+    ],
+    icon: "🏠",
+    isLive: true,
+    whatILearned:
+      "Worked on a real production cycle including UI implementation, backend integration, deployment testing, optimization for Android devices, and user-feedback based improvements for Play Store release.",
+    trustTag: "Production Level",
+    liveLink:
+      "https://play.google.com/store/apps/details?id=com.community.jiremalisamajapp",
+  },
 
   {
-  id: 2,
+  id: 3,
   title: "Soci-Go App",
   category: "Full Stack",
   description:
@@ -304,7 +315,7 @@ export const projects: Project[] = [
   ],
 },
  {
-  id: 3,
+  id: 4,
   title: "Crowd Detection using YOLOv5",
   category: "ML/AI",
   description:
@@ -327,7 +338,7 @@ export const projects: Project[] = [
 
   
   {
-    id: 4,
+    id: 5,
     title: "Hand Gesture Mouse Control",
     category: "ML/AI",
     description: "Control your computer mouse using hand gestures with computer vision.",
@@ -342,7 +353,7 @@ export const projects: Project[] = [
     githubLink: "https://github.com/sanglap1221/Hand_Gesture_MouseControl.git",
     screenshots: ["/screenshots/Hand_Gesture_MouseControl/image.png"],
   },{
-    id: 5,
+    id: 6,
     title: "Weather App",
     category: "Mobile App",
     description: "Real-time weather application with location-based forecasts and offline caching.",
@@ -358,7 +369,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "Genetic Disease Risk Predictor",
     category: "ML Web App",
     description: "A machine learning web application that predicts genetic disease risks.",
@@ -376,7 +387,7 @@ export const projects: Project[] = [
       "/screenshots/Genetic_Disease_Risk_Prediction/2.png",
     ],
   },{
-  id: 7,
+  id: 8,
   title: "Token Rewards for Learning Modules",
   category: "Blockchain / Web3",
   description:
