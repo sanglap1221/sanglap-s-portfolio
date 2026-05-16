@@ -14,8 +14,9 @@ const Services = () => {
           <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
             What I Offer
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 relative inline-block">
             My <span className="gradient-text">Services</span>
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Professional mobile app development services tailored to bring your ideas to life

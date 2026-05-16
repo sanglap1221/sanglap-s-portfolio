@@ -15,8 +15,9 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
          
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 relative inline-block">
             Know More <span className="gradient-text">About Me</span>
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
           </h2>
         </div>
 
@@ -34,8 +35,8 @@ const About = () => {
               <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {personalInfo.aboutBio}
               </p>
-              <p className="mt-4 text-sm text-primary font-medium">
-                Currently working as a developer, building scalable production applications with Flutter and modern web technologies.
+              <p className="mt-4 text-sm text-primary font-semibold tracking-wide">
+                🚀 Actively building production-ready mobile and web experiences.
               </p>
             </div>
 

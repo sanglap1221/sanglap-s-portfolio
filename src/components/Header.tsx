@@ -13,21 +13,47 @@ const Header = () => {
   // State to track if mobile menu is open
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
+  // State to track the active section for scroll spy
+  const [activeSection, setActiveSection] = useState('home');
+  
   // State to track if user has scrolled (for background change)
   const [hasScrolled, setHasScrolled] = useState(false);
 
-  // This effect adds a scroll listener to change the navbar background
+  // This effect adds a scroll listener and intersection observer
   useEffect(() => {
     const handleScroll = () => {
-      // If scrolled more than 50 pixels, show background
       setHasScrolled(window.scrollY > 50);
     };
+
+    // Scroll Spy Logic using IntersectionObserver
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px', 
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
     
-    // Add the scroll listener
+    navLinks.forEach((link) => {
+      const sectionId = link.href.replace('#', '');
+      const element = document.getElementById(sectionId);
+      if (element) observer.observe(element);
+    });
+
     window.addEventListener('scroll', handleScroll);
     
-    // Clean up the listener when component unmounts
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   // Toggle mobile menu open/closed
@@ -40,7 +66,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         hasScrolled 
-          ? 'bg-background/90 backdrop-blur-lg border-b border-border' 
+          ? 'bg-background/90 backdrop-blur-lg border-b border-border shadow-sm' 
           : 'bg-transparent'
       }`}
     >
@@ -48,9 +74,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           
           {/* Logo Section */}
-          <a href="#home" className="flex items-center gap-2">
+          <a href="#home" className="flex items-center gap-2 group">
             {/* Logo box with initials */}
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary/20">
               <span className="font-display font-bold text-primary-foreground text-lg">
                 {personalInfo.initials}
               </span>
@@ -64,15 +90,26 @@ const Header = () => {
           {/* Desktop Navigation - hidden on mobile */}
           <nav className="hidden md:flex items-center gap-8">
             {/* Loop through each navigation link */}
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace('#', '');
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`relative text-sm font-medium transition-all duration-300 py-2 ${
+                    isActive 
+                      ? 'text-primary' 
+                      : 'text-muted-foreground hover:text-primary/80'
+                  }`}
+                >
+                  {link.name}
+                  {/* Animated underline for active link */}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full animate-in fade-in slide-in-from-left-2 duration-300" />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA Button - hidden on mobile */}
@@ -82,22 +119,22 @@ const Header = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 >
                       <FileText className="w-4 h-4 mr-2" />
                     My CV
                     <ChevronDown className="w-4 h-4 ml-2" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="end" className="bg-card/95 backdrop-blur-md border-border">
                 <DropdownMenuItem asChild>
-                  <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
                     <Eye className="w-4 h-4 mr-2" />
                     View CV
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf">
+                  <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf" className="cursor-pointer">
                     <Download className="w-4 h-4 mr-2" />
                     Download CV
                   </a>
@@ -119,28 +156,37 @@ const Header = () => {
 
         {/* Mobile Menu - only shows when isMenuOpen is true */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border">
-            <div className="flex flex-col p-4 gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
-                >
-                  {link.name}
-                </a>
-              ))}
+          <div className="md:hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border animate-in slide-in-from-top duration-300">
+            <div className="flex flex-col p-4 gap-2">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.replace('#', '');
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={closeMenu}
+                    className={`flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+                      isActive 
+                        ? 'bg-primary/10 text-primary font-semibold' 
+                        : 'text-muted-foreground hover:bg-muted'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
+              <div className="h-px bg-border my-2" />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="outline"
-                    className="w-full justify-center border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground mt-2"
+                    className="w-full justify-center border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
                   >
+                    <FileText className="w-4 h-4 mr-2" />
                     My CV
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)]">
+                <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)] bg-card border-border">
                   <DropdownMenuItem asChild>
                     <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
                       <Eye className="w-4 h-4 mr-2" />

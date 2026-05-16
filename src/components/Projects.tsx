@@ -40,8 +40,9 @@ const Projects = () => {
           <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
             Portfolio
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 relative inline-block">
             Featured <span className="gradient-text">Projects</span>
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             A showcase of my work across mobile development, machine learning, and full-stack applications

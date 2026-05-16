@@ -66,9 +66,9 @@ const Hero = () => {
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                       />
                     </defs>
-                    <text className="fill-primary text-[11px] font-medium uppercase tracking-[0.3em]">
+                    <text className="fill-primary text-[10px] font-semibold uppercase tracking-[0.4em]">
                       <textPath xlinkHref="#circle">
-                        • HIRE ME • HIRE ME • HIRE ME • HIRE ME
+                        • LET'S CONNECT • LET'S CONNECT • LET'S CONNECT
                       </textPath>
                     </text>
                   </svg>
@@ -94,10 +94,10 @@ const Hero = () => {
               RIGHT SIDE - TEXT CONTENT + BUTTONS
           ===================================================== */}
           <div className="text-center lg:text-left order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 rounded-full px-4 py-2 mb-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs md:text-sm font-medium">
-                Currently Working as Full Stack Developer
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary rounded-full px-4 py-2 mb-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-xs md:text-sm font-medium uppercase tracking-wider">
+                Full Stack Developer • Flutter Enthusiast
               </span>
             </div>
             
