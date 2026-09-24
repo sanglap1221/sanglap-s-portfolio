@@ -1,18 +1,14 @@
 export const personalInfo = {
   name: "Sanglap Ghosh",
   initials: "SG",
-  title: "Full Stack App & Web Developer",
+  title: "Full Stack Developer",
   heroIntro:
-    "I build scalable mobile apps and web applications with clean architecture, strong backend systems, and seamless user experience.",
+    "B.Tech CSE student building production mobile apps, web platforms, backend systems, and AI/ML solutions.",
   aboutBio:
-    "I am a Cross-Platform Mobile Engineer specializing in Flutter and Firebase, with valuable internship experience building and deploying real-world applications.\n\nCurrently working as a developer, building scalable production applications with Flutter and modern web technologies.\n\nMy passion lies in integrating intelligent solutions (AI/ML) with seamless UI/UX to build apps that are not just beautiful, but also smart and highly functional. I also leverage full-stack concepts for robust, end-to-end delivery.",
+    "I'm a B.Tech Computer Science student at UEM Jaipur and a developer working across Flutter, React.js, Node.js, and AI/ML.\n\nI currently work at One Aim IT Solutions on production mobile applications, backend APIs, and live Play Store releases. Previously, I interned at One Aim and ShivKalp IT Services, shipping real community and healthcare apps.\n\nI like building complete products: clean UI, reliable APIs, and practical machine-learning tools that actually get used.",
   footerTagline:
-    "Flutter App Developer crafting beautiful mobile experiences with passion and precision.",
+    "Full Stack Developer working across Flutter, React.js, Node.js, and AI/ML.",
 };
-
-// ============================================
-// EDUCATION
-// ============================================
 
 export interface Education {
   degree: string;
@@ -42,10 +38,6 @@ export const education: Education[] = [
   },
 ];
 
-// ============================================
-// EXPERIENCE
-// ============================================
-
 export interface Experience {
   role: string;
   company: string;
@@ -55,169 +47,179 @@ export interface Experience {
   highlights: string[];
   certificateUrl?: string;
   playStoreUrl?: string;
+  tag?: string;
+  tags?: string[];
 }
 
 export const experiences: Experience[] = [
   {
-    role: "Flutter / Full Stack Developer",
+    role: "Junior Flutter & Android Developer",
     company: "One Aim IT Solutions",
-    duration: "31 Dec 2025 – Present",
+    duration: "April 2026 – Present",
     location: "Remote",
+    tag: "Full-time",
     summary:
-      "Currently working on production Flutter applications, Play Store publishing workflows, and Node.js backend systems for live client products.",
+      "Building and maintaining production Flutter/Android applications and Node.js backend systems for live client products.",
     highlights: [
-      "Managing Play Console tasks and app development for RelaxDoc Health",
-      "Published and maintained a live app on Google Play Store",
-      "Built Node.js backend modules for the astrology website Ekb Bhavisya",
-      "Handling API integration and scalable app architecture",
-      "Collaborating closely with designers, QA, and backend developers",
-      "Optimizing app performance, responsiveness, and maintainability",
+      "Working on EkBhavishya, a production suite of 4 apps: User, Astrologer, Seller, and Admin",
+      "Building Node.js, Express, and MongoDB backend modules with REST APIs",
+      "Implementing calling, chat, wallet/billing, and FCM notification flows",
+      "Handling production debugging, Play Console tasks, and app deployment",
+      "Collaborating with designers, QA, and backend developers on live releases",
+    ],
+    tags: ["Flutter", "Node.js", "MongoDB", "REST API", "Firebase"],
+  },
+  {
+    role: "Flutter Developer Intern",
+    company: "One Aim IT Solutions",
+    duration: "Dec 2025 – Mar 2026",
+    location: "Remote",
+    tag: "Internship",
+    summary:
+      "Contributed to production Flutter applications, including RelaxDoc Health and Play Store release workflows.",
+    highlights: [
+      "Developed and maintained Flutter features for live client applications",
+      "Managed Play Console tasks and supported the RelaxDoc Health release",
+      "Worked on API integration, bug fixes, and production-ready UI",
+      "Collaborated with the team across design, QA, and backend tasks",
     ],
     certificateUrl: "/SANGLAP.pdf",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.relaxdoc.health",
+    tags: ["Flutter", "Firebase", "REST API", "Play Store"],
   },
   {
-    role: "Flutter App Developer Intern",
+    role: "Flutter Development Intern",
     company: "ShivKalp IT Services",
-    duration: "May 2025 – July 2025",
-    location: "Remote",
+    duration: "May 2025 – Jul 2025",
+    location: "Nashik, Maharashtra",
+    tag: "Internship",
     summary:
-      "Built and shipped Flutter features for a production app while collaborating closely with designers and backend engineers.",
+      "Built and shipped Flutter features for a production community app published on the Google Play Store.",
     highlights: [
-      "Built and deployed production-ready Flutter applications using clean architecture",
-      "Integrated Firebase Authentication, Firestore, and REST APIs",
-      "Collaborated with designers and backend teams for scalable features",
-      "Contributed to an app published on the Google Play Store",
-      "Focused on performance optimization, responsive UI, and maintainable code",
+      "Implemented Flutter UI and core logic for the Jiremali Samaj App",
+      "Integrated Firebase Authentication, Firestore, Storage, and FCM",
+      "Contributed to a live Play Store release used by 1,000+ community members",
+      "Optimized UI rendering and focused on maintainable production code",
     ],
-    certificateUrl: "sanglap_cerf.pdf",
+    certificateUrl: "/sanglap_cerf.pdf",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.community.jiremalisamajapp",
+    tags: ["Flutter", "Firebase", "Real-time", "Push Notifications"],
   },
 ];
-
-// ============================================
-// SKILLS
-// ============================================
 
 export interface Skill {
   name: string;
   description: string;
-  level: number; // proficiency percentage
+  level: number;
   color: "primary" | "secondary" | "accent";
-  icon: string; // emoji only
+  icon: string;
 }
 
 export const skills: Skill[] = [
   {
-    name: "Flutter",
-    description: "Building responsive, performant cross-platform apps",
+    name: "Flutter & Dart",
+    description: "Production mobile apps, clean architecture, Play Store releases",
     level: 90,
     color: "primary",
-    icon: "🧭",
+    icon: "📱",
+  },
+  {
+    name: "React.js",
+    description: "Web platforms, dashboards, and responsive UI",
+    level: 82,
+    color: "secondary",
+    icon: "⚛️",
+  },
+  {
+    name: "Node.js & Express",
+    description: "REST APIs, auth, real-time features, and deployments",
+    level: 84,
+    color: "accent",
+    icon: "🖥️",
   },
   {
     name: "Firebase",
-    description: "Auth, Firestore, Cloud Functions, and FCM",
+    description: "Auth, Firestore, Cloud Functions, Storage, and FCM",
     level: 88,
-    color: "secondary",
+    color: "primary",
     icon: "🔥",
   },
   {
-    name: "Dart",
-    description: "Clean architectures, async patterns, and testing",
-    level: 85,
+    name: "MongoDB & SQL",
+    description: "Data modeling, queries, and production persistence",
+    level: 80,
+    color: "secondary",
+    icon: "🗄️",
+  },
+  {
+    name: "Python & ML",
+    description: "OpenCV, YOLOv5, Scikit-learn, Pandas, Streamlit",
+    level: 78,
     color: "accent",
-    icon: "🎯",
+    icon: "🧠",
   },
   {
     name: "State Management",
-    description: "BLoC and GetX for scalable state patterns",
-    level: 80,
+    description: "BLoC, GetX, and scalable app architecture",
+    level: 82,
     color: "primary",
     icon: "🧩",
   },
   {
-    name: "Backend APIs",
-    description: "Node.js, Express, JWT auth, REST design",
-    level: 78,
-    color: "secondary",
-    icon: "🛠️",
-  },
-  {
-    name: "Python & ML",
-    description: "OpenCV, Mediapipe, Scikit-learn, Streamlit",
-    level: 76,
-    color: "accent",
-    icon: "🤖",
-  },
-  {
-    name: "UI/UX Systems",
-    description: "Design systems, motion, accessibility",
-    level: 82,
-    color: "primary",
-    icon: "🎨",
-  },
-  {
-    name: "DevOps Basics",
-    description: "CI/CD, Play Store releases, crash monitoring",
-    level: 70,
+    name: "Release & DevOps",
+    description: "Play Console, CI basics, crash monitoring, hosting",
+    level: 74,
     color: "secondary",
     icon: "🚀",
   },
 ];
-
-// ============================================
-// SERVICES
-// ============================================
 
 export interface Service {
   title: string;
   description: string;
   features: string[];
-  icon: string; // emoji only
+  icon: string;
 }
 
 export const services: Service[] = [
   {
     title: "Flutter App Development",
-    description: "End-to-end mobile app delivery with clean architecture and smooth animations.",
-    features: ["iOS & Android", "Clean Architecture", "Animations"],
+    description: "Production Android and iOS apps with clean architecture and maintainable UI.",
+    features: ["iOS & Android", "Clean Architecture", "Play Store"],
     icon: "📱",
   },
   {
     title: "Backend & APIs",
-    description: "Secure REST APIs, auth flows, and real-time features with Node.js & Firebase.",
-    features: ["JWT Auth", "Realtime", "Scalable"],
-    icon: "🛠️",
+    description: "REST APIs, authentication, and real-time features with Node.js, Express, and Firebase.",
+    features: ["JWT Auth", "MongoDB", "FCM"],
+    icon: "🖥️",
+  },
+  {
+    title: "Web Applications",
+    description: "Dashboards, admin panels, and public websites with React.js and Node.js.",
+    features: ["React.js", "Admin Dashboard", "Live Deploy"],
+    icon: "💻",
   },
   {
     title: "AI/ML Integrations",
-    description: "Computer vision, predictive models, and intelligent in-app experiences.",
-    features: ["OpenCV", "Mediapipe", "Scikit-learn"],
-    icon: "🤖",
-  },
-  {
-    title: "UI to Flutter Conversion",
-    description: "Convert Figma or Adobe XD designs into pixel-perfect, responsive Flutter screens.",
-    features: ["Responsive", "Pixel Perfect", "Animations"],
-    icon: "🎨",
+    description: "Computer vision, predictive models, and practical ML tools for real use-cases.",
+    features: ["OpenCV", "YOLOv5", "Scikit-learn"],
+    icon: "🧠",
   },
   {
     title: "App Optimization",
-    description: "Performance profiling, caching strategies, and crash/resilience hardening.",
+    description: "Performance profiling, caching, crash handling, and production debugging.",
     features: ["Caching", "Performance", "Error Handling"],
     icon: "⚡",
   },
   {
     title: "Launch & Analytics",
-    description: "Play Store release prep, analytics wiring, and post-launch monitoring setup.",
-    features: ["Play Store", "Analytics", "A/B Ready"],
+    description: "Play Store release prep, versioning, and post-launch monitoring setup.",
+    features: ["Play Store", "Analytics", "Release Ops"],
     icon: "🚀",
   },
 ];
-
-// ============================================
-// PROJECTS
-// ============================================
 
 export interface Project {
   id: number;
@@ -226,42 +228,73 @@ export interface Project {
   description: string;
   fullDescription: string;
   tech: string[];
-  icon: string; // emoji
+  icon: string;
   isLive: boolean;
   whatILearned: string;
   liveLink?: string;
   screenshots?: string[];
-  videoUrl?: string; // Video demo URL (e.g., for crowd detection)
-  githubLink?: string; // GitHub repository link
+  videoUrl?: string;
+  githubLink?: string;
   trustTag?: string;
 }
 
 export const projects: Project[] = [
   {
     id: 1,
+    title: "EkBhavishya",
+    category: "Full Stack",
+    description:
+      "Production astrology platform with 4 Flutter apps and a Node.js backend for users, astrologers, sellers, and admins.",
+    fullDescription:
+      "EkBhavishya is a live production suite built at One Aim IT Solutions. It includes four Flutter applications — User, Astrologer, Seller, and Admin — backed by Node.js, Express, and MongoDB. The system covers REST APIs, calling and chat flows, wallet/billing, FCM notifications, and production deployment. I work on both the mobile apps and backend modules used in real client releases.",
+    tech: ["Flutter", "Node.js", "Express.js", "MongoDB", "Firebase", "REST API"],
+    icon: "🔮",
+    isLive: true,
+    whatILearned:
+      "How to ship and maintain a multi-app production system with shared backend APIs, real-time communication, payments/wallet logic, and Play Store release operations.",
+    trustTag: "4 Production Apps",
+  },
+  {
+    id: 2,
+    title: "UEMJ Gaming Club",
+    category: "Full Stack",
+    description:
+      "Live college gaming club platform with a user website, admin dashboard, and Node.js backend.",
+    fullDescription:
+      "UEMJ Gaming Club is a full-stack web platform for the Gaming Geeks Club at UEM Jaipur. It includes a public user platform, an admin dashboard, and a Node.js/Express/MongoDB backend. I built and deployed the live website used for club presence, events, and administration.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    icon: "🎮",
+    isLive: true,
+    whatILearned:
+      "Built and deployed a complete web product with separate user and admin experiences, proving I can ship web applications as well as Flutter apps.",
+    trustTag: "Live Website",
+    liveLink: "https://uemj-gaming-club.vercel.app/",
+  },
+  {
+    id: 3,
     title: "RelaxDoc Health",
     category: "Mobile App",
     description:
-      "A production-level health and wellness mobile application published on the Google Play Store.",
+      "Health and wellness mobile application published on the Google Play Store.",
     fullDescription:
-      "RelaxDoc Health is a comprehensive healthcare mobile application built with Flutter. I was responsible for the end-to-end development, including UI/UX implementation, API integration, and performance optimization. I managed the entire Google Play Console workflow, from alpha testing to the final production release. The app provides a seamless user experience for health monitoring and patient management, demonstrating my ability to ship and maintain real-world, high-traffic applications.",
+      "RelaxDoc Health is a production healthcare mobile application built with Flutter. I worked on UI implementation, API integration, performance improvements, and Google Play Console workflows from testing through production release.",
     tech: ["Flutter", "Dart", "Firebase", "Node.js", "REST API", "Play Console"],
-    icon: "🩺",
+    icon: "🏥",
     isLive: true,
     whatILearned:
-      "Managed the full production lifecycle of a live app, including Play Store publishing, crash monitoring, performance profiling, and iterative feature development based on user feedback.",
+      "Managed a live app lifecycle including Play Store publishing, crash monitoring, performance profiling, and iterative feature work.",
     trustTag: "Live on Play Store",
     liveLink:
       "https://play.google.com/store/apps/details?id=com.relaxdoc.health",
   },
   {
-    id: 2,
+    id: 4,
     title: "Jiremali Samaj App",
     category: "Full Stack",
     description:
-      "A full-stack community application with real-time chat and media posts, deployed on Google Play Store.",
+      "Community application with real-time chat and media posts, live on the Google Play Store.",
     fullDescription:
-      "Jiremali Samaj App is a full-stack community-based mobile application developed during my internship. It facilitates real-time communication, media-based post sharing, and push notifications among community members. On the frontend, I implemented the entire Flutter UI and core app logic, ensuring smooth navigation and responsive layout across devices. On the backend, the team used Firebase Firestore, Storage, and Authentication. I integrated all Firebase modules on the client side, handled real-time listeners, state management, and ensured production-level handling for app publishing.",
+      "Jiremali Samaj App is a community mobile application developed during my ShivKalp internship. It supports real-time communication, media posts, and push notifications. I implemented the Flutter UI and client-side Firebase integration for Authentication, Firestore, Storage, and FCM, and helped take the app through Play Store release.",
     tech: [
       "Flutter",
       "Dart",
@@ -270,151 +303,176 @@ export const projects: Project[] = [
       "Cloud Storage",
       "FCM",
     ],
-    icon: "🏠",
+    icon: "👥",
     isLive: true,
     whatILearned:
-      "Worked on a real production cycle including UI implementation, backend integration, deployment testing, optimization for Android devices, and user-feedback based improvements for Play Store release.",
-    trustTag: "Production Level",
+      "Worked through a real production cycle: UI implementation, backend integration, Android optimization, and Play Store release.",
+    trustTag: "Live on Play Store",
     liveLink:
       "https://play.google.com/store/apps/details?id=com.community.jiremalisamajapp",
+    screenshots: [
+      "/screenshots/jiremali1.png",
+      "/screenshots/jiremali2.png",
+      "/screenshots/jiremali3.png",
+    ],
   },
-
-  {
-  id: 3,
-  title: "Soci-Go App",
-  category: "Full Stack",
-  description:
-    "A fully developed social media app with authentication, chatting, real-time posts, and backend API on Render.",
-  fullDescription:
-    "Soci-Go is a complete full-stack social media app built independently using Flutter for frontend and a Node.js + TypeScript backend deployed on Render. It includes secure Firebase Authentication, REST API-based post management, real-time messaging UI, user profile handling, and media uploads via Cloudinary + Firebase Storage. API URLs are resolved dynamically at runtime for emulator, physical device, and hosted builds using environment variables. I developed both the Flutter UI and the backend API including user login, post creation, fetching user posts, authorization, and request validation.",
-  tech: [
-    "Flutter",
-    "Dart",
-    "Node.js",
-    "Express.js",
-    "TypeScript",
-    "Firebase",
-    "MongoDB",
-    "Cloudinary",
-    "REST API",
-    "Render Deployment",
-  ],
-  icon: "📱",
-  isLive: false,
-  whatILearned:
-    "Deepened my understanding of full-stack product development — frontend architecture, backend REST APIs, Firebase authentication flows, media storage, deployment on Render, and secure JWT-based authorization.",
-  liveLink: "",
-  trustTag: "Real Client Project",
-  githubLink: "https://github.com/sanglap1221/mini-soci.git",
-  screenshots: [
-    "/screenshots/soci/1.jpg",
-    "/screenshots/soci/2.jpg",
-    "/screenshots/soci/3.jpg",
-    "/screenshots/soci/4.jpg",
-    "/screenshots/soci/5.jpg",
-  ],
-},
- {
-  id: 4,
-  title: "Crowd Detection using YOLOv5",
-  category: "ML/AI",
-  description:
-    "Detects real-time crowd formations using YOLOv5 and OpenCV with intelligent proximity-based tracking.",
-  fullDescription:
-    "This project detects crowd formation in video streams using the pretrained YOLOv5s object detection model. It tracks human positions frame-by-frame and triggers a 'crowd alert' when 3 or more people stand close together across multiple frames. This logic helps identify persistent groups rather than just isolated detections. It displays crowd details directly in the terminal in real time.\n\nVideo preprocessing is required for best real-time performance and accuracy:\nffmpeg -i input_video.mp4 -c:v libx264 -preset fast -crf 23 -c:a aac converted_video.mp4\n\nTo run the project:\npython yourfile.py",
-  tech: ["Python", "PyTorch", "OpenCV", "YOLOv5", "ffmpeg"],
-  icon: "🧠",
-  isLive: false,
-  whatILearned:
-    "I learned how to integrate YOLOv5 with OpenCV for object detection, implement real-time distance-based grouping logic, optimize video input using ffmpeg, and understand model speed vs accuracy trade-offs.",
-  liveLink: "",
-  screenshots: [
-    "public/screenshots/Crowd Detection using YOLOv5/6.png"
-   
-   ],
-   videoUrl: "public/screenshots/Crowd Detection using YOLOv5/input_video.mp4",
-  githubLink:"https://github.com/sanglap1221/Crowd_Detection-.git",
-},
-
-  
   {
     id: 5,
+    title: "GigFlow Smart Leads Dashboard",
+    category: "Full Stack",
+    description:
+      "Lead-management dashboard for tracking, organizing, and acting on incoming business leads.",
+    fullDescription:
+      "GigFlow Smart Leads Dashboard is a web dashboard for managing incoming leads with a cleaner operational workflow. It focuses on organizing lead data, status tracking, and a usable admin/operator interface for follow-ups.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    icon: "📊",
+    isLive: false,
+    whatILearned:
+      "Designed a practical operations dashboard with structured lead data, status flows, and a web UI meant for daily use rather than a demo-only layout.",
+    trustTag: "Dashboard",
+  },
+  {
+    id: 6,
+    title: "Automatic App Generator",
+    category: "Full Stack",
+    description:
+      "Tooling project for generating application structure and boilerplate from reusable templates.",
+    fullDescription:
+      "Automatic App Generator is a productivity project for scaffolding application structure from reusable templates. The goal is to reduce repetitive setup work and produce a consistent starting point for new apps.",
+    tech: ["Node.js", "JavaScript", "Templates"],
+    icon: "⚙️",
+    isLive: false,
+    whatILearned:
+      "Thought about developer tooling: reusable project structure, consistent scaffolding, and reducing setup time for new applications.",
+    trustTag: "Tooling",
+  },
+  {
+    id: 7,
+    title: "Soci-Go App",
+    category: "Full Stack",
+    description:
+      "Social app with authentication, chatting, posts, and a Node.js backend.",
+    fullDescription:
+      "Soci-Go is a full-stack social media app built with Flutter on the frontend and a Node.js + TypeScript backend. It includes Firebase Authentication, REST API-based post management, messaging UI, profiles, and media uploads via Cloudinary and Firebase Storage.",
+    tech: [
+      "Flutter",
+      "Dart",
+      "Node.js",
+      "Express.js",
+      "TypeScript",
+      "Firebase",
+      "MongoDB",
+      "Cloudinary",
+      "REST API",
+    ],
+    icon: "💬",
+    isLive: false,
+    whatILearned:
+      "Built both the Flutter client and backend API, including auth, posts, media storage, and environment-based API URL handling.",
+    trustTag: "Full Stack App",
+    githubLink: "https://github.com/sanglap1221/mini-soci.git",
+    screenshots: [
+      "/screenshots/soci/1.jpg",
+      "/screenshots/soci/2.jpg",
+      "/screenshots/soci/3.jpg",
+      "/screenshots/soci/4.jpg",
+      "/screenshots/soci/5.jpg",
+    ],
+  },
+  {
+    id: 8,
+    title: "Crowd Detection using YOLOv5",
+    category: "ML/AI",
+    description:
+      "Detects crowd formations in video using YOLOv5 and OpenCV with proximity-based tracking.",
+    fullDescription:
+      "This project detects crowd formation in video streams using a pretrained YOLOv5s model. It tracks people frame-by-frame and raises a crowd alert when three or more people stay close together across multiple frames, helping identify persistent groups rather than isolated detections.",
+    tech: ["Python", "PyTorch", "OpenCV", "YOLOv5", "ffmpeg"],
+    icon: "📹",
+    isLive: false,
+    whatILearned:
+      "Integrated YOLOv5 with OpenCV, implemented distance-based grouping, and learned the trade-off between detection speed and accuracy.",
+    screenshots: ["/screenshots/Crowd Detection using YOLOv5/6.png"],
+    videoUrl: "/screenshots/Crowd Detection using YOLOv5/input_video.mp4",
+    githubLink: "https://github.com/sanglap1221/Crowd_Detection-.git",
+  },
+  {
+    id: 9,
     title: "Hand Gesture Mouse Control",
     category: "ML/AI",
-    description: "Control your computer mouse using hand gestures with computer vision.",
+    description: "Control a computer mouse using hand gestures and computer vision.",
     fullDescription:
-      "An innovative project that uses computer vision to track hand movements and translate them into mouse actions. Supports gestures for clicking, scrolling, and cursor movement.",
+      "A computer-vision project that tracks hand movements and maps them to mouse actions such as cursor movement, clicking, and scrolling.",
     tech: ["Python", "OpenCV", "Mediapipe", "PyAutoGUI"],
     icon: "🖐️",
     isLive: false,
     whatILearned:
-      "Gained hands-on experience with computer vision libraries and real-time gesture recognition algorithms.",
-    liveLink: "",
+      "Used MediaPipe and OpenCV for real-time gesture recognition and mapped landmarks to desktop mouse controls.",
     githubLink: "https://github.com/sanglap1221/Hand_Gesture_MouseControl.git",
     screenshots: ["/screenshots/Hand_Gesture_MouseControl/image.png"],
-  },{
-    id: 6,
+  },
+  {
+    id: 10,
     title: "Weather App",
     category: "Mobile App",
-    description: "Real-time weather application with location-based forecasts and offline caching.",
+    description: "Location-based weather app with live API data and offline caching.",
     fullDescription:
-      "A weather application that provides accurate forecasts using live API data. Features include location detection, 7-day forecasts, weather alerts, and offline mode with cached data.",
+      "A Flutter weather application that fetches live weather data, detects location, and caches results for offline use.",
     tech: ["Flutter", "OpenWeather API", "Geolocator", "Hive"],
-    icon: "🌤️",
-    isLive: false,  
+    icon: "🌦️",
+    isLive: false,
     whatILearned:
-      "Learned about working with external APIs, handling network states, and implementing effective caching strategies.",
-    liveLink: "",
-    githubLink:"https://github.com/sanglap1221/weather_app.git"
+      "Worked with external APIs, network states, and local caching in a Flutter app.",
+    githubLink: "https://github.com/sanglap1221/weather_app.git",
   },
-
   {
-    id: 7,
+    id: 11,
     title: "Genetic Disease Risk Predictor",
     category: "ML Web App",
-    description: "A machine learning web application that predicts genetic disease risks.",
+    description: "Streamlit app that predicts genetic disease risk from user and family-history inputs.",
     fullDescription:
-      "A Streamlit-based web application that uses machine learning models to predict the probability of genetic diseases based on user inputs and family history data.",
+      "A Streamlit web application that uses machine-learning models to estimate genetic disease risk based on user inputs and family history.",
     tech: ["Python", "Streamlit", "Scikit-learn", "Pandas"],
     icon: "🧬",
     isLive: false,
     whatILearned:
-      "Understood the end-to-end ML pipeline from data preprocessing to model deployment in a user-friendly web interface.",
-    liveLink: "",
+      "Took an ML pipeline from preprocessing to a usable web interface.",
     githubLink: "https://github.com/sanglap1221/Genetic_Disease_Risk_Prediction.git",
     screenshots: [
       "/screenshots/Genetic_Disease_Risk_Prediction/1.png",
       "/screenshots/Genetic_Disease_Risk_Prediction/2.png",
     ],
-  },{
-  id: 8,
-  title: "Token Rewards for Learning Modules",
-  category: "Blockchain / Web3",
-  description:
-    "A blockchain-based reward system that grants tokens to learners after completing learning modules, secured by smart contracts.",
-  fullDescription:
-    "Token Rewards for Learning Modules is a blockchain-based system that incentivizes learners by rewarding them with tokens when they complete specific learning modules. The core logic is implemented in a smart contract that ensures fair token distribution and prevents users from claiming rewards multiple times for the same module. All reward events are transparently recorded on-chain, making the system tamper-proof and verifiable.\n\nThe vision behind this project is to make online learning more engaging by attaching real value to progress and completion. In the future, this system can be integrated with decentralized learning platforms, support multiple types of learning modules, introduce staking mechanisms for unused tokens, and even issue NFT-based certificates when modules are completed.\n\nKey Features:\n• Smart contract-based token distribution for completed modules\n• Ensures each user can claim a reward only once per module\n• Transparent and immutable reward tracking on the blockchain\n• Secure token storage and retrieval\n• Owner-controlled module completion verification\n\nContract Address:\n0x7C4DDBcb27619883C561AaC082dB37d7CBbfEEdC",
-  tech: ["Solidity", "Ethereum", "Smart Contracts", "Web3"],
-  icon: "🏅",
-  isLive: false,
-  whatILearned:
-    "I learned how to design and write Solidity smart contracts, handle token-based reward logic securely, and think about transparency, immutability, and user incentives on the blockchain. This project also helped me understand how blockchain can be applied to real use-cases like education and learner motivation.",
-  liveLink: "",
-  githubLink:
-    "https://github.com/sanglap1221/EDU_Test_Token_rewards_for_learning_modules",
-  screenshots: [
-    "/screenshots/Token_Rewards/1.png",   // frontend UI image
-    "/screenshots/Token_Rewards/2.png", // contract / dashboard image
-  ],
-}
-
+  },
+  {
+    id: 12,
+    title: "Token Rewards for Learning Modules",
+    category: "Blockchain / Web3",
+    description:
+      "Smart-contract reward system that grants tokens after learning modules are completed.",
+    fullDescription:
+      "A blockchain reward system that issues tokens when learners complete modules. The Solidity contract records rewards on-chain and prevents duplicate claims for the same module.\n\nContract Address:\n0x7C4DDBcb27619883C561AaC082dB37d7CBbfEEdC",
+    tech: ["Solidity", "Ethereum", "Smart Contracts", "Web3"],
+    icon: "🪙",
+    isLive: false,
+    whatILearned:
+      "Designed Solidity reward logic with transparent on-chain tracking and one-claim-per-module rules.",
+    githubLink:
+      "https://github.com/sanglap1221/EDU_Test_Token_rewards_for_learning_modules",
+    screenshots: [
+      "/screenshots/Token_Rewards/1.png",
+      "/screenshots/Token_Rewards/2.png",
+    ],
+  },
 ];
 
-export const projectCategories = ["All", "Mobile App", "ML/AI", "Full Stack", "ML Web App", "Blockchain / Web3"];
-
-// ============================================
-// CONTACT
-// ============================================
+export const projectCategories = [
+  "All",
+  "Mobile App",
+  "ML/AI",
+  "Full Stack",
+  "ML Web App",
+  "Blockchain / Web3",
+];
 
 export const contactInfo = {
   email: "sanglapghosh51@gmail.com",
@@ -422,18 +480,10 @@ export const contactInfo = {
   location: "Bongaon, West Bengal | UEM Jaipur",
 };
 
-// ============================================
-// SOCIAL LINKS
-// ============================================
-
 export const socialLinks = {
   github: "https://github.com/sanglap1221",
   linkedin: "https://www.linkedin.com/in/sanglap-ghosh-62960328a/",
 };
-
-// ============================================
-// NAVIGATION LINKS
-// ============================================
 
 export const navLinks = [
   { name: "Home", href: "#home" },

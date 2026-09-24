@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Download, Eye, ChevronDown, FileText } from 'lucide-react';
+import { Menu, X, Download, Eye, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -10,26 +10,18 @@ import {
 import { personalInfo, navLinks } from '@/data/content';
 
 const Header = () => {
-  // State to track if mobile menu is open
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // State to track the active section for scroll spy
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  
-  // State to track if user has scrolled (for background change)
-  const [hasScrolled, setHasScrolled] = useState(false);
 
-  // This effect adds a scroll listener and intersection observer
   useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 50);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
 
-    // Scroll Spy Logic using IntersectionObserver
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -70% 0px', 
-      threshold: 0
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -41,170 +33,125 @@ const Header = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
     navLinks.forEach((link) => {
       const sectionId = link.href.replace('#', '');
-      const element = document.getElementById(sectionId);
-      if (element) observer.observe(element);
+      const el = document.getElementById(sectionId);
+      if (el) observer.observe(el);
     });
 
-    window.addEventListener('scroll', handleScroll);
-    
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', onScroll);
       observer.disconnect();
     };
   }, []);
 
-  // Toggle mobile menu open/closed
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  
-  // Close menu when a link is clicked
-  const closeMenu = () => setIsMenuOpen(false);
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        hasScrolled 
-          ? 'bg-background/90 backdrop-blur-lg border-b border-border shadow-sm' 
-          : 'bg-transparent'
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 py-3'
+          : 'bg-white/80 backdrop-blur-sm py-4'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-20">
-          
-          {/* Logo Section */}
-          <a href="#home" className="flex items-center gap-2 group">
-            {/* Logo box with initials */}
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary/20">
-              <span className="font-display font-bold text-primary-foreground text-lg">
-                {personalInfo.initials}
-              </span>
-            </div>
-            {/* Full name (hidden on small screens) */}
-            <span className="font-display font-semibold text-xl tracking-wider hidden sm:block">
-              {personalInfo.name.split(' ')[0].toUpperCase()}
-            </span>
-          </a>
-
-          {/* Desktop Navigation - hidden on mobile */}
-          <nav className="hidden md:flex items-center gap-8">
-            {/* Loop through each navigation link */}
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.replace('#', '');
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`relative text-sm font-medium transition-all duration-300 py-2 ${
-                    isActive 
-                      ? 'text-primary' 
-                      : 'text-muted-foreground hover:text-primary/80'
-                  }`}
-                >
-                  {link.name}
-                  {/* Animated underline for active link */}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full animate-in fade-in slide-in-from-left-2 duration-300" />
-                  )}
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* Desktop CTA Button - hidden on mobile */}
-          <div className="hidden md:block">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                >
-                      <FileText className="w-4 h-4 mr-2" />
-                    My CV
-                    <ChevronDown className="w-4 h-4 ml-2" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-card/95 backdrop-blur-md border-border">
-                <DropdownMenuItem asChild>
-                  <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                    <Eye className="w-4 h-4 mr-2" />
-                    View CV
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf" className="cursor-pointer">
-                    <Download className="w-4 h-4 mr-2" />
-                    Download CV
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        {/* Brand Logo */}
+        <a href="#home" className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-blue-500/20">
+            {personalInfo.initials}
           </div>
+          <span className="font-bold text-slate-900 text-lg tracking-tight">
+            {personalInfo.name.split(' ')[0]}
+          </span>
+        </a>
 
-          {/* Mobile Menu Button - only visible on mobile */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {/* Show X when open, hamburger when closed */}
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+        {/* Navigation items */}
+        <nav className="hidden lg:flex items-center gap-7">
+          {navLinks.map((item, idx) => {
+            const sectionId = item.href.replace('#', '');
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                key={idx}
+                href={item.href}
+                className={`text-sm font-medium transition-colors ${
+                  isActive ? 'text-blue-600 font-semibold' : 'text-slate-600 hover:text-blue-600'
+                }`}
+              >
+                {item.name}
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* CV Dropdown */}
+        <div className="hidden sm:block">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="rounded-xl border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-medium shadow-xs"
+              >
+                <FileText className="w-4 h-4 mr-1.5 text-slate-500" />
+                My CV
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              className="bg-white border-slate-200 rounded-xl shadow-lg p-1.5 min-w-[140px]"
+            >
+              <DropdownMenuItem asChild className="cursor-pointer rounded-lg text-xs font-medium py-2">
+                <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
+                  <Eye className="w-3.5 h-3.5 mr-2 text-blue-600" />
+                  View CV
+                </a>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="cursor-pointer rounded-lg text-xs font-medium py-2">
+                <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf">
+                  <Download className="w-3.5 h-3.5 mr-2 text-blue-600" />
+                  Download CV
+                </a>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
-        {/* Mobile Menu - only shows when isMenuOpen is true */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border animate-in slide-in-from-top duration-300">
-            <div className="flex flex-col p-4 gap-2">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.href.replace('#', '');
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={closeMenu}
-                    className={`flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
-                      isActive 
-                        ? 'bg-primary/10 text-primary font-semibold' 
-                        : 'text-muted-foreground hover:bg-muted'
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                );
-              })}
-              <div className="h-px bg-border my-2" />
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="w-full justify-center border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
-                  >
-                    <FileText className="w-4 h-4 mr-2" />
-                    My CV
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)] bg-card border-border">
-                  <DropdownMenuItem asChild>
-                    <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
-                      <Eye className="w-4 h-4 mr-2" />
-                      View CV
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf">
-                      <Download className="w-4 h-4 mr-2" />
-                      Download CV
-                    </a>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </div>
-        )}
+        {/* Mobile menu toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="lg:hidden p-2 text-slate-600 hover:text-slate-900"
+          aria-label="Toggle navigation menu"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-4 shadow-xl space-y-3">
+          {navLinks.map((item, idx) => (
+            <a
+              key={idx}
+              href={item.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-slate-700 font-medium py-1.5 text-sm hover:text-blue-600"
+            >
+              {item.name}
+            </a>
+          ))}
+          <div className="pt-2 border-t border-slate-100 flex gap-2">
+            <Button asChild variant="outline" size="sm" className="w-full text-xs rounded-xl">
+              <a href="/Sanglap_CV.pdf" target="_blank" rel="noopener noreferrer">
+                <Eye className="w-3.5 h-3.5 mr-1 text-blue-600" /> View CV
+              </a>
+            </Button>
+            <Button asChild size="sm" className="w-full bg-blue-600 text-white text-xs rounded-xl">
+              <a href="/Sanglap_CV.pdf" download="Sanglap_CV.pdf">
+                <Download className="w-3.5 h-3.5 mr-1" /> Download
+              </a>
+            </Button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

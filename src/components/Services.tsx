@@ -1,66 +1,62 @@
+import { Smartphone, Server, Laptop, Cpu, Gauge, BarChart3, LucideIcon } from 'lucide-react';
 import { services } from '@/data/content';
+
+const iconMap: Record<string, LucideIcon> = {
+  'Flutter App Development': Smartphone,
+  'Backend & APIs': Server,
+  'Web Applications': Laptop,
+  'AI/ML Integrations': Cpu,
+  'App Optimization': Gauge,
+  'Launch & Analytics': BarChart3,
+};
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
+    <section id="services" className="py-16 bg-white border-t border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-bold text-blue-600 tracking-wider uppercase block mb-1">
             What I Offer
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 relative inline-block">
-            My <span className="gradient-text">Services</span>
-            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
+          <h2 className="text-3xl font-bold text-slate-900">
+            My <span className="text-blue-600">Services</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-slate-500 text-sm mt-1">
             Professional mobile app development services tailored to bring your ideas to life
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Loop through each service and create a card */}
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group relative"
-            >
-              {/* Glowing border effect on hover */}
-              <div className="absolute -inset-px bg-gradient-to-r from-primary via-secondary to-primary rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              
-              {/* Card content */}
-              <div className="relative glow-card rounded-2xl p-8 h-full bg-card">
-                {/* Service Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">{service.icon}</span>
+          {services.map((svc, idx) => {
+            const Icon = iconMap[svc.title] || Smartphone;
+            return (
+              <div
+                key={idx}
+                className="border border-slate-200/90 rounded-2xl p-6 bg-white shadow-xs hover:shadow-md hover:border-blue-300 hover:-translate-y-1 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-bold text-base text-slate-900 mb-2">{svc.title}</h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                    {svc.description}
+                  </p>
                 </div>
 
-                {/* Service Title and Description */}
-                <h3 className="font-semibold text-xl mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-6">{service.description}</p>
-
-                {/* Feature Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100">
+                  {svc.features.map((feature, fIdx) => (
                     <span
-                      key={feature}
-                      className="px-3 py-1 bg-muted rounded-full text-xs text-muted-foreground"
+                      key={fIdx}
+                      className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[11px] font-medium rounded-md"
                     >
                       {feature}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,174 +1,140 @@
-import { ArrowRight, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { personalInfo } from "@/data/content";
+import { useState, useEffect } from 'react';
+import { ArrowRight, Play, Smartphone, Briefcase, Code2, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { personalInfo } from '@/data/content';
 
-// Floating skill icons
-const floatingIcons = [
-  { icon: "📱", label: "Flutter" },
-  { icon: "🌐", label: "React" },
-  { icon: "🔥", label: "Node.js" },
-  { icon: "⚡", label: "Firebase" },
+const stats = [
+  { icon: Smartphone, count: '5+', label: 'Production Apps', color: 'text-blue-600', bg: 'bg-blue-50' },
+  { icon: Briefcase, count: '3+', label: 'Professional Experience', color: 'text-sky-600', bg: 'bg-sky-50' },
+  { icon: Code2, count: '10+', label: 'Projects Completed', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+  { icon: Users, count: '1,000+', label: 'Active Users', color: 'text-cyan-600', bg: 'bg-cyan-50' },
 ];
 
 const Hero = () => {
+  const dynamicRoles = ['Full Stack Developer', 'Mobile App Engineer', 'AI/ML Integrator'];
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % dynamicRoles.length);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, [dynamicRoles.length]);
+
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden cyber-grid"
-    >
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
-
-      {/* Container */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* ====================================================
-              LEFT SIDE - IMAGE + FLOATING ICONS
-          ===================================================== */}
-          <div className="relative flex justify-center lg:justify-end order-2 lg:order-1 lg:pr-10">
-            
-            {/* Floating Skill Icons */}
-            <div className="absolute -left-8 top-20 z-10 hidden lg:flex flex-col gap-3">
-              {floatingIcons.map((item, index) => (
-                <div
-                  key={item.label}
-                  className={`bg-card/80 backdrop-blur-sm border border-border rounded-lg px-3 py-2 flex items-center gap-2 ${
-                    index % 2 === 0 ? "floating" : "floating-delayed"
-                  }`}
-                >
-                  <span className="text-lg">{item.icon}</span>
-                  <span className="text-xs text-muted-foreground">
-                    {item.label}
-                  </span>
-                </div>
-              ))}
+    <section id="home" className="pt-28 pb-16 bg-white overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          {/* Left Text Block */}
+          <div className="lg:col-span-7 space-y-5">
+            {/* Tech Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+              • FLUTTER • REACT.JS • NODE.JS • AI/ML
             </div>
 
-            {/* Profile Picture Wrapper */}
-            <div className="relative">
-              {/* Animated glowing ring */}
-              <div className="absolute -inset-4 profile-ring rounded-full opacity-60 blur-sm" />
-              <div className="absolute -inset-4 profile-ring rounded-full opacity-30" />
-
-              {/* Hire Me Rotating Badge */}
-              <div className="absolute -top-4 -right-4 z-20">
-                <div className="w-24 h-24 rounded-full border-2 border-primary/50 bg-card flex items-center justify-center animate-spin-slow">
-                  <svg
-                    viewBox="0 0 100 100"
-                    className="w-full h-full animate-[spin_10s_linear_infinite_reverse]"
-                  >
-                    <defs>
-                      <path
-                        id="circle"
-                        d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                      />
-                    </defs>
-                    <text className="fill-primary text-[10px] font-semibold uppercase tracking-[0.4em]">
-                      <textPath xlinkHref="#circle">
-                        • LET'S CONNECT • LET'S CONNECT • LET'S CONNECT
-                      </textPath>
-                    </text>
-                  </svg>
-
-                  <div className="absolute inset-4 bg-primary rounded-full flex items-center justify-center">
-                    <ArrowRight className="w-6 h-6 text-primary-foreground -rotate-45" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Profile Image */}
-              <div className="w-70 h-70 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full bg-gradient-to-br from-muted to-card border-4 border-border overflow-hidden relative shadow-xl">
-                <img
-                  src="/prof.png"
-                  alt={`${personalInfo.name} portrait`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* ====================================================
-              RIGHT SIDE - TEXT CONTENT + BUTTONS
-          ===================================================== */}
-          <div className="text-center lg:text-left order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary rounded-full px-4 py-2 mb-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-xs md:text-sm font-medium uppercase tracking-wider">
-                Full Stack Developer • Flutter Enthusiast
-              </span>
-            </div>
-            
-            {/* Greeting Badge */}
-            <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border rounded-full px-4 py-2 mb-6">
-              <span className="text-xl">👋</span>
-              <span className="text-muted-foreground text-sm">
-                Hi I'm {personalInfo.name}
-              </span>
+            {/* Main Headline */}
+            <div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                {personalInfo.name}
+              </h1>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-blue-600 tracking-tight leading-tight transition-all duration-500 min-h-[56px] flex items-center">
+                {dynamicRoles[roleIndex]}
+              </h2>
             </div>
 
-            {/* Heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              FULL STACK APP &amp; WEB
-              <br />
-              <span className="gradient-text font-display italic">Developer</span>
-              <span className="block text-muted-foreground text-lg md:text-xl mt-4 tracking-wide">
-                Flutter • React • Node.js
-                </span>
-            </h1>
-
-            {/* Intro Paragraph */}
-            <p className="text-muted-foreground text-lg max-w-lg mb-8 mx-auto lg:mx-0">
+            {/* Subtext */}
+            <p className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed">
               {personalInfo.heroIntro}
             </p>
 
-            <p className="text-primary text-base md:text-lg font-medium mb-8 max-w-lg mx-auto lg:mx-0">
-              🚀 From UI to Backend - I build complete end-to-end solutions
+            <p className="text-slate-500 text-xs sm:text-sm font-medium tracking-wide">
+              Flutter · React.js · Node.js · Firebase · MongoDB · Python
             </p>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              
-              {/* View Projects */}
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3.5 pt-3">
               <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base font-semibold neon-border pulse-glow"
                 asChild
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-6 py-6 font-medium shadow-md shadow-blue-500/20"
               >
-                <a href="#projects">
-                  Explore Projects
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                <a href="#projects" className="flex items-center gap-2">
+                  Explore Projects <ArrowRight className="w-4 h-4" />
                 </a>
               </Button>
-
-              {/* Contact Me */}
               <Button
-                variant="ghost"
-                size="lg"
-                className="text-foreground hover:text-primary px-8 py-6 text-base font-semibold group"
                 asChild
+                variant="outline"
+                className="border-slate-200 bg-white hover:bg-slate-50 text-slate-700 rounded-xl px-6 py-6 font-medium"
               >
-                <a href="#contact">
-                  <div className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center mr-3 group-hover:border-primary/50 transition-colors">
-                    <Play className="w-5 h-5 fill-current" />
-                  </div>
-                  Contact Me
+                <a href="#contact" className="flex items-center gap-2">
+                  <Play className="w-3.5 h-3.5 fill-slate-700 text-slate-700" /> Contact Me
                 </a>
               </Button>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-muted-foreground text-xs uppercase tracking-widest">
-          Scroll
-        </span>
-        <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-primary rounded-full animate-bounce" />
+          {/* Right Image Block with Custom Dotted pattern & handwritten annotation */}
+          <div className="lg:col-span-5 flex justify-center relative">
+            {/* Background dot matrix */}
+            <div className="absolute top-2 right-4 grid grid-cols-6 gap-2 opacity-30 select-none pointer-events-none">
+              {Array.from({ length: 24 }).map((_, i) => (
+                <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+              ))}
+            </div>
+
+            <div className="relative">
+              {/* Outer circular gradient glow */}
+              <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-92 md:h-92 rounded-full p-2 bg-gradient-to-br from-blue-100 via-sky-50 to-white shadow-xl flex items-center justify-center">
+                {/* Image container */}
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-inner bg-slate-100">
+                  <img
+                    src="/prof.png"
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Floating Role Pill */}
+              <div className="absolute bottom-4 right-2 sm:right-6 bg-blue-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg border-2 border-white">
+                Full Stack Developer
+              </div>
+
+              {/* Handwritten Floating Tag */}
+              <div className="absolute -bottom-8 -left-6 sm:-left-12 bg-white/90 backdrop-blur-xs border border-slate-200/80 rounded-2xl p-2.5 shadow-sm transform -rotate-3 text-center hidden sm:block">
+                <p className="text-[11px] font-medium text-slate-600 italic">
+                  Turning ideas <br />
+                  <span className="font-semibold text-slate-800">into Real Applications 🚀 and ☕</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4-Item Stats Bar */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((stat, idx) => {
+            const IconComponent = stat.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 flex items-center gap-4 shadow-xs hover:border-blue-200 transition-colors"
+              >
+                <div
+                  className={`w-11 h-11 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center shrink-0`}
+                >
+                  <IconComponent className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                    {stat.count}
+                  </div>
+                  <div className="text-xs text-slate-500 font-medium">{stat.label}</div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
