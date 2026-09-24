@@ -4,10 +4,10 @@ import { Button } from '@/components/ui/button';
 import { personalInfo } from '@/data/content';
 
 const stats = [
-  { icon: Smartphone, count: '5+', label: 'Production Apps', color: 'text-blue-600', bg: 'bg-blue-50' },
-  { icon: Briefcase, count: '3+', label: 'Professional Experience', color: 'text-sky-600', bg: 'bg-sky-50' },
-  { icon: Code2, count: '10+', label: 'Projects Completed', color: 'text-indigo-600', bg: 'bg-indigo-50' },
-  { icon: Users, count: '1,000+', label: 'Active Users', color: 'text-cyan-600', bg: 'bg-cyan-50' },
+  { icon: Smartphone, count: '5+', label: 'Production Apps', color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-950/50' },
+  { icon: Briefcase, count: '3+', label: 'Professional Experience', color: 'text-sky-600 dark:text-sky-400', bg: 'bg-sky-50 dark:bg-sky-950/50' },
+  { icon: Code2, count: '10+', label: 'Projects Completed', color: 'text-indigo-600 dark:text-indigo-400', bg: 'bg-indigo-50 dark:bg-indigo-950/50' },
+  { icon: Users, count: '1,000+', label: 'Active Users', color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-950/50' },
 ];
 
 const Hero = () => {
@@ -22,33 +22,33 @@ const Hero = () => {
   }, [dynamicRoles.length]);
 
   return (
-    <section id="home" className="pt-28 pb-16 bg-white overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="home" className="pt-28 pb-16 overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           {/* Left Text Block */}
           <div className="lg:col-span-7 space-y-5">
             {/* Tech Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/60 text-blue-700 dark:text-blue-400 text-xs font-semibold tracking-wide shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
               • FLUTTER • REACT.JS • NODE.JS • AI/ML
             </div>
 
             {/* Main Headline */}
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 {personalInfo.name}
               </h1>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-blue-600 tracking-tight leading-tight transition-all duration-500 min-h-[56px] flex items-center">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight leading-tight transition-all duration-500 min-h-[56px] flex items-center">
                 {dynamicRoles[roleIndex]}
               </h2>
             </div>
 
             {/* Subtext */}
-            <p className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
               {personalInfo.heroIntro}
             </p>
 
-            <p className="text-slate-500 text-xs sm:text-sm font-medium tracking-wide">
+            <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium tracking-wide">
               Flutter · React.js · Node.js · Firebase · MongoDB · Python
             </p>
 
@@ -56,7 +56,7 @@ const Hero = () => {
             <div className="flex flex-wrap gap-3.5 pt-3">
               <Button
                 asChild
-                className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-6 py-6 font-medium shadow-md shadow-blue-500/20"
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white rounded-xl px-6 py-6 font-medium shadow-md shadow-blue-500/20"
               >
                 <a href="#projects" className="flex items-center gap-2">
                   Explore Projects <ArrowRight className="w-4 h-4" />
@@ -65,10 +65,10 @@ const Hero = () => {
               <Button
                 asChild
                 variant="outline"
-                className="border-slate-200 bg-white hover:bg-slate-50 text-slate-700 rounded-xl px-6 py-6 font-medium"
+                className="border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-xl px-6 py-6 font-medium shadow-xs"
               >
                 <a href="#contact" className="flex items-center gap-2">
-                  <Play className="w-3.5 h-3.5 fill-slate-700 text-slate-700" /> Contact Me
+                  <Play className="w-3.5 h-3.5 fill-slate-700 dark:fill-slate-200 text-slate-700 dark:text-slate-200" /> Contact Me
                 </a>
               </Button>
             </div>
@@ -79,15 +79,15 @@ const Hero = () => {
             {/* Background dot matrix */}
             <div className="absolute top-2 right-4 grid grid-cols-6 gap-2 opacity-30 select-none pointer-events-none">
               {Array.from({ length: 24 }).map((_, i) => (
-                <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />
               ))}
             </div>
 
             <div className="relative">
               {/* Outer circular gradient glow */}
-              <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-92 md:h-92 rounded-full p-2 bg-gradient-to-br from-blue-100 via-sky-50 to-white shadow-xl flex items-center justify-center">
+              <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-92 md:h-92 rounded-full p-2 bg-gradient-to-br from-blue-100 via-sky-50 to-white dark:from-blue-900/40 dark:via-slate-800/40 dark:to-slate-900 shadow-xl flex items-center justify-center border border-slate-200/50 dark:border-slate-800">
                 {/* Image container */}
-                <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-inner bg-slate-100">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-slate-900 shadow-inner bg-slate-100 dark:bg-slate-800">
                   <img
                     src="/prof.png"
                     alt={personalInfo.name}
@@ -97,15 +97,15 @@ const Hero = () => {
               </div>
 
               {/* Floating Role Pill */}
-              <div className="absolute bottom-4 right-2 sm:right-6 bg-blue-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg border-2 border-white">
+              <div className="absolute bottom-4 right-2 sm:right-6 bg-blue-600 dark:bg-blue-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-slate-900">
                 Full Stack Developer
               </div>
 
               {/* Handwritten Floating Tag */}
-              <div className="absolute -bottom-8 -left-6 sm:-left-12 bg-white/90 backdrop-blur-xs border border-slate-200/80 rounded-2xl p-2.5 shadow-sm transform -rotate-3 text-center hidden sm:block">
-                <p className="text-[11px] font-medium text-slate-600 italic">
+              <div className="absolute -bottom-8 -left-6 sm:-left-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xs border border-slate-200/80 dark:border-slate-800 rounded-2xl p-2.5 shadow-sm transform -rotate-3 text-center hidden sm:block">
+                <p className="text-[11px] font-medium text-slate-600 dark:text-slate-300 italic">
                   Turning ideas <br />
-                  <span className="font-semibold text-slate-800">into Real Applications 🚀 and ☕</span>
+                  <span className="font-semibold text-slate-800 dark:text-slate-100">into Real Applications 🚀 and ☕</span>
                 </p>
               </div>
             </div>
@@ -119,7 +119,7 @@ const Hero = () => {
             return (
               <div
                 key={idx}
-                className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 flex items-center gap-4 shadow-xs hover:border-blue-200 transition-colors"
+                className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-slate-200/90 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-4 shadow-xs hover:border-blue-300 dark:hover:border-blue-700/60 transition-colors"
               >
                 <div
                   className={`w-11 h-11 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center shrink-0`}
@@ -127,10 +127,10 @@ const Hero = () => {
                   <IconComponent className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                     {stat.count}
                   </div>
-                  <div className="text-xs text-slate-500 font-medium">{stat.label}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">{stat.label}</div>
                 </div>
               </div>
             );

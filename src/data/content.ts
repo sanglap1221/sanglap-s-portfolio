@@ -241,6 +241,22 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    title: "Astro Freelance",
+    category: "Full Stack",
+    description:
+      "Full-stack Vedic astrology platform with Next.js web interface, Electron desktop app, and Python FastAPI computation engine.",
+    fullDescription:
+      "Astro Freelance is a comprehensive traditional Vedic and Bengali astrology software platform built with Python (FastAPI + Swiss Ephemeris / pyswisseph), Next.js (React), and Electron for desktop. It computes planetary coordinates, birth charts (Kundli), Dasha timelines, Gochara transits, and generates automated astrological reports with Playwright PDF rendering.",
+    tech: ["Python", "FastAPI", "Next.js", "Electron", "MongoDB", "pyswisseph"],
+    icon: "🪐",
+    isLive: false,
+    whatILearned:
+      "Implemented complex astronomical mathematics from first principles using Swiss Ephemeris and engineered a multi-client architecture supporting both web and cross-platform desktop users.",
+    trustTag: "Web & Desktop",
+    githubLink: "https://github.com/sanglap1221/Astro_freelance.git",
+  },
+  {
+    id: 2,
     title: "EkBhavishya",
     category: "Full Stack",
     description:
@@ -255,7 +271,7 @@ export const projects: Project[] = [
     trustTag: "4 Production Apps",
   },
   {
-    id: 2,
+    id: 3,
     title: "UEMJ Gaming Club",
     category: "Full Stack",
     description:
@@ -271,7 +287,7 @@ export const projects: Project[] = [
     liveLink: "https://uemj-gaming-club.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "RelaxDoc Health",
     category: "Mobile App",
     description:
@@ -288,7 +304,7 @@ export const projects: Project[] = [
       "https://play.google.com/store/apps/details?id=com.relaxdoc.health",
   },
   {
-    id: 4,
+    id: 5,
     title: "Jiremali Samaj App",
     category: "Full Stack",
     description:
@@ -317,7 +333,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "GigFlow Smart Leads Dashboard",
     category: "Full Stack",
     description:
@@ -332,7 +348,7 @@ export const projects: Project[] = [
     trustTag: "Dashboard",
   },
   {
-    id: 6,
+    id: 7,
     title: "Automatic App Generator",
     category: "Full Stack",
     description:
@@ -347,7 +363,7 @@ export const projects: Project[] = [
     trustTag: "Tooling",
   },
   {
-    id: 7,
+    id: 8,
     title: "Soci-Go App",
     category: "Full Stack",
     description:
@@ -380,7 +396,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     title: "Crowd Detection using YOLOv5",
     category: "ML/AI",
     description:
@@ -397,7 +413,7 @@ export const projects: Project[] = [
     githubLink: "https://github.com/sanglap1221/Crowd_Detection-.git",
   },
   {
-    id: 9,
+    id: 10,
     title: "Hand Gesture Mouse Control",
     category: "ML/AI",
     description: "Control a computer mouse using hand gestures and computer vision.",
@@ -412,7 +428,7 @@ export const projects: Project[] = [
     screenshots: ["/screenshots/Hand_Gesture_MouseControl/image.png"],
   },
   {
-    id: 10,
+    id: 11,
     title: "Weather App",
     category: "Mobile App",
     description: "Location-based weather app with live API data and offline caching.",
@@ -426,7 +442,7 @@ export const projects: Project[] = [
     githubLink: "https://github.com/sanglap1221/weather_app.git",
   },
   {
-    id: 11,
+    id: 12,
     title: "Genetic Disease Risk Predictor",
     category: "ML Web App",
     description: "Streamlit app that predicts genetic disease risk from user and family-history inputs.",
@@ -444,7 +460,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 12,
+    id: 13,
     title: "Token Rewards for Learning Modules",
     category: "Blockchain / Web3",
     description:
@@ -490,7 +506,6 @@ export const navLinks = [
   { name: "About", href: "#about" },
   { name: "Work Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
-  { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];

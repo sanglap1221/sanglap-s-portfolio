@@ -35,59 +35,86 @@
 */
 @layer base {
   :root {
-    /* Background colors */
-    --background: 0 0% 100%;           /* White background */
-    --foreground: 0 0% 10%;            /* Dark text */
+    /* Background colors - Soft, elegant cool slate background */
+    --background: 210 40% 98%;          /* #f8fafc slate-50 */
+    --foreground: 222 47% 11%;           /* Dark slate text */
 
-    /* Card colors - light gray */
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
+    /* Card colors - Pure crisp white to pop against the soft background */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 222 47% 11%;
 
     /* Primary color - Professional Blue */
     --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 98%;
+    --primary-foreground: 210 40% 98%;
 
-    /* Secondary color - Dark Gray/Blue */
-    --secondary: 215 28% 17%;
-    --secondary-foreground: 0 0% 98%;
+    /* Secondary color - Soft Blue/Slate */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11.2%;
 
     /* Muted colors */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     /* Accent color - Light Blue */
     --accent: 214 100% 97%;
     --accent-foreground: 221 83% 53%;
 
     /* Error/destructive color */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
     /* Border and input colors */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 221 83% 53%;
 
     /* Border radius for rounded corners */
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Custom gradient effects */
     --gradient-primary: linear-gradient(135deg, hsl(221, 83%, 53%), hsl(214, 100%, 50%));
-    --gradient-background: linear-gradient(180deg, hsl(0, 0%, 98%), hsl(0, 0%, 100%));
-    --gradient-card: linear-gradient(145deg, hsl(210, 40%, 96%), hsl(0, 0%, 100%));
+    --gradient-background: linear-gradient(180deg, hsl(210, 40%, 98%), hsl(214, 32%, 95%));
     
-    /* Soft shadows for professional look */
-    --shadow-sm: 0 1px 2px 0 hsl(0, 0%, 0%, 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(0, 0%, 0%, 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(0, 0%, 0%, 0.1);
+    /* Soft shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.08);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.08);
+  }
 
-    /* Text effects */
-    --text-primary: hsl(var(--foreground));
-    --text-secondary: hsl(var(--muted-foreground));
-    --text-muted: hsl(var(--muted-foreground) / 0.7);
+  .dark {
+    /* Deep midnight navy/slate background */
+    --background: 222 47% 7%;            /* #090d16 */
+    --foreground: 210 40% 98%;
+
+    /* Dark slate card */
+    --card: 217 33% 12%;                 /* #131b2e */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 33% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary color - Bright Modern Blue */
+    --primary: 217 91% 60%;              /* #3b82f6 */
+    --primary-foreground: 222 47% 7%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 224 76% 48%;
   }
 }
 
